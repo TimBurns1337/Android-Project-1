@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.androidproject1.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.androidproject1.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_workout_plan"
+        android:name="com.example.androidproject1.PlanWorkoutFragment"
+        android:label="@string/menu_workout_plan"
+        tools:layout="@layout/plan_workout_fragment" />
+
+    <fragment
+        android:id="@+id/nav_community"
+        android:name="com.example.androidproject1.CommunityFragment"
+        android:label="@string/menu_workout_plan"
+        tools:layout="@layout/community_fragment" />
+
+    <fragment
+        android:id="@+id/nav_compete"
+        android:name="com.example.androidproject1.CompeteFragment"
+        android:label="@string/menu_workout_plan"
+        tools:layout="@layout/compete_fragment" />
+
+    <fragment
+        android:id="@+id/nav_sched"
+        android:name="com.example.androidproject1.ScheduleWorkoutFragment"
+        android:label="@string/menu_workout_plan"
+        tools:layout="@layout/schedule_workout_fragment" />
+
+    <fragment
+        android:id="@+id/nav_submit_workout"
+        android:name="com.example.androidproject1.SubmitWorkoutFragment"
+        android:label="@string/menu_workout_plan"
+        tools:layout="@layout/submit_workout_fragment" />
+
+    <fragment
+        android:id="@+id/nav_notifcations"
+        android:name="com.example.androidproject1.NotificationsFragment"
+        android:label="@string/menu_workout_plan"
+        tools:layout="@layout/notifications_fragment" />
+
+</navigation>

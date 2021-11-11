@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_image"
+        android:background="#090030"
+        app:layout_constraintBottom_toTopOf="@id/gl_34pc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/welcome_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/welcome__string"
+        android:textColor="@color/login_ek3_color"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/image" />
+
+    <!-- This is login textview -->
+    <TextView
+        android:id="@+id/login_ek4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center"
+        android:layout_marginTop="56dp"
+        android:gravity="center"
+        android:text="@string/login_ek4_string"
+        android:textColor="@color/login_ek3_color"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_34pc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.34" />
+
+    <TextView
+        android:id="@+id/welcome_back_champ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center"
+        android:gravity="center"
+        android:text="@string/welcome_back_champ_string"
+        android:textColor="@color/welcome_back_champ_color"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    <!-- This is email textview -->
+
+    <ImageView
+        android:id="@+id/bg_ek1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:contentDescription="bg_ek1"
+        android:src="@drawable/bg_ek1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_back_champ" />
+
+    <!-- This is password imageview - for design  -->
+
+    <!-- This is password textview -->
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="24dp"
+        android:hint="@string/email_string"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/bg"
+        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/gl_10pc"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_back_champ"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:contentDescription="bg"
+        android:inputType="textEmailAddress"
+        android:src="@drawable/bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bg_ek1" />
+
+    <!-- This is the eye icon -->
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="@string/password_string"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/vector"
+        app:layout_constraintStart_toStartOf="@+id/gl_10pc"
+        app:layout_constraintTop_toBottomOf="@+id/bg_ek1" />
+
+    <!-- This is the register textview -->
+
+    <!-- This is the login textview -->
+
+    <ImageView
+        android:id="@+id/vector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:contentDescription="vector"
+        android:src="@drawable/vector"
+        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
+        app:layout_constraintTop_toBottomOf="@+id/bg_ek1" />
+
+    <Button
+        android:id="@+id/rec_cal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rec_cal_shape"
+        android:onClick="newRegisterClicked"
+        android:padding="10dp"
+        android:text="New to Calisthee? Sign Up! "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/login_ek3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/login_ek3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/rec_cal_shape_dark"
+        android:gravity="center"
+        android:text="@string/login_ek3_string"
+        android:textColor="#FAF8F8"
+        android:textSize="24sp"
+        android:onClick="newsignupClicked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"/>
+
+    <Button
+        android:id="@+id/btn_rem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="saveDataLog"
+        android:text="Remember Me"
+        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/gl_10pc"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_10pc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_90pc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
