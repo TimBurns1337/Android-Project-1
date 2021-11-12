@@ -51,4 +51,6 @@
 	<color name="____body_2_ek2_color">#16DB65</color>
 	<color name="warm_up_10_min_color">#000000</color>
 	<color name="find_your_next_class____color">#7A7585</color>
+	<color name="notifications_subtitle">#87839b</color>
+	<color name="notifications_title">#000</color>
 </resources>
