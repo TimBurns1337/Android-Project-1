@@ -1,14 +1,26 @@
 package com.example.androidproject1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.androidproject1.models.*;
+import com.example.androidproject1.dao.*;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+
 public class RegisterActivity extends AppCompatActivity {
+
+    private UserDao userDao;
+    private Button register;
 
     EditText et1;
     EditText et2;
@@ -43,6 +55,49 @@ public class RegisterActivity extends AppCompatActivity {
         if(text3!=""){
             et3.setText(text3);
         }
+
+        //
+
+        userDao = new UserDao();
+        register = (Button) findViewById(R.id.login_ek3);
+        register.setOnClickListener(v->{
+
+            // TODO: handle validation
+            User u = new User(
+                    et1.getText().toString(),
+                    et2.getText().toString(),
+                    et3.getText().toString()
+
+            );
+
+            // check if the user exists first
+            userDao.getUserByUsername(et1.getText().toString())
+                    .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (!task.isSuccessful()) {
+                                Log.e("firebase", "Error getting data", task.getException());
+                            }
+                            else {
+
+                                if (task.getResult().getValue() == null) {
+                                    // if new user, create one
+                                    userDao.add(u).addOnSuccessListener( suc -> {
+                                        Log.e("firebase", "New user added", task.getException());
+                                    }).addOnFailureListener( err -> {
+                                        Log.e("firebase", "Error on adding new user", task.getException());
+                                    });
+
+                                } else {
+                                    Log.d("firebase", "Existing user found");
+                                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                                }
+
+                            }
+                        }
+                    });
+
+        });
     }
 
     public void login2Clicked(View view) {

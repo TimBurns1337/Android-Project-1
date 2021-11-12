@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1090258109123",
+    "firebase_url": "https://calisthenics-83123-default-rtdb.firebaseio.com",
+    "project_id": "calisthenics-83123",
+    "storage_bucket": "calisthenics-83123.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090258109123:android:088b8cb7bb256083185876",
+        "android_client_info": {
+          "package_name": "com.example.androidproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090258109123-49t43dtiks9ibf333t4fdbc7t0oofkmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiNdI3YE6qOit7d1c8CY5KFXfw3igfqoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090258109123-49t43dtiks9ibf333t4fdbc7t0oofkmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090258109123:android:1cb905da4e8036cd185876",
+        "android_client_info": {
+          "package_name": "com.example.androidproject1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090258109123-49t43dtiks9ibf333t4fdbc7t0oofkmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiNdI3YE6qOit7d1c8CY5KFXfw3igfqoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090258109123-49t43dtiks9ibf333t4fdbc7t0oofkmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
