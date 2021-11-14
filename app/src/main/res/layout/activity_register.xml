@@ -157,7 +157,7 @@
 
 
     <Button
-        android:id="@+id/login_ek3"
+        android:id="@+id/Register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -177,14 +177,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        android:onClick="login2Clicked"
         android:text="@string/login_string"
         android:textColor="@color/login_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/sign_up_ek1"
-        app:layout_constraintTop_toTopOf="@+id/gl_34pc"
-        android:onClick="login2Clicked"/>
+        app:layout_constraintTop_toTopOf="@+id/gl_34pc" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_34pc"

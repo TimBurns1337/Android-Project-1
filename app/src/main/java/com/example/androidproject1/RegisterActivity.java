@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         //
 
         userDao = new UserDao();
-        register = (Button) findViewById(R.id.login_ek3);
+        register = (Button) findViewById(R.id.Register);
         register.setOnClickListener(v->{
 
             // TODO: handle validation
