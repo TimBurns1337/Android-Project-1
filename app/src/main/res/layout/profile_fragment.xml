@@ -20,8 +20,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/group_2_ek1"
@@ -37,18 +36,29 @@
         app:layout_constraintVertical_bias="0.563" />
 
     <TextView
-        android:id="@+id/alejandro_suarez"
+        android:id="@+id/profile_fname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center"
-        android:text="@string/alejandro_suarez_string"
+        android:text="FName "
         android:textColor="@color/rectangle_33_color"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/image"
-        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
-        app:layout_constraintStart_toStartOf="@+id/gl_10pc"
+        app:layout_constraintEnd_toStartOf="@+id/gl_50c"
         app:layout_constraintTop_toBottomOf="@+id/group_2_ek1" />
 
+
+    <TextView
+        android:id="@+id/profile_lname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center"
+        android:text=" LNAme"
+        android:textColor="@color/rectangle_33_color"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/gl_34pc"
+        app:layout_constraintStart_toStartOf="@+id/gl_50c"
+        app:layout_constraintTop_toBottomOf="@+id/group_2_ek1" />
 
     <ImageView
         android:id="@+id/bg_ek3"
@@ -154,7 +164,7 @@
         />
 
     <TextView
-        android:id="@+id/show"
+        android:id="@+id/ET_pro_weight"
         android:layout_width="51dp"
         android:layout_height="30dp"
 
@@ -245,6 +255,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.44" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_50c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" />
 
     <Button
         android:id="@+id/btnChangePro"

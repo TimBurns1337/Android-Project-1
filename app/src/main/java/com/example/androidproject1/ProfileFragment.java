@@ -15,26 +15,64 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ProfileFragment extends Fragment {
 
     private ProfileViewModel mViewModel;
+    TextView ProfileFname;
+    TextView ProfileLname;
+    TextView DOB;
+    TextView Sex;
+    TextView Weight;
+    TextView Height;
+
+    String FName, LName, dob, sex, weight, height;
 
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
     }
 
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
+
+        ProfileFname = view.findViewById(R.id.profile_fname);
+        ProfileLname = view.findViewById(R.id.profile_lname);
+        DOB = view.findViewById(R.id.dobtext);
+        Sex = view.findViewById(R.id.sextext);
+        Weight = view.findViewById(R.id.ET_pro_weight);
+        Height = view.findViewById(R.id.heighttext);
+        // TODO: add code to get data from db to populate these textviews
+
+
+
 
         Button btn = (Button) view.findViewById(R.id.btnChangePro);
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent i = new Intent(getActivity(),UpdateProfileActivity.class);
-                // put some data if needed
+                // TODO: get data from textview
+                FName = ProfileFname.getText().toString();
+                LName = ProfileLname.getText().toString();
+                dob = DOB.getText().toString();
+                sex = Sex.getText().toString();
+                weight = Weight.getText().toString();
+                height = Height.getText().toString();
+
+
+                i.putExtra("fname",FName);
+                i.putExtra("lname",LName);
+                i.putExtra("dob",dob);
+                i.putExtra("sex",sex);
+                i.putExtra("weight",weight);
+                i.putExtra("height",height);
+
                 startActivity(i);
             }
         });
