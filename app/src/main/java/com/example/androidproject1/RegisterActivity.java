@@ -20,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 public class RegisterActivity extends AppCompatActivity {
 
     private UserDao userDao;
+    private User user = new User();
     private Button register;
 
     EditText et1;
@@ -107,6 +108,16 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void saveDataReg(View view) {
+
+        // TODO: testing if i can set the user name in model and get it later to pull datat from db
+        user = new User();
+        String username = et1.getText().toString();
+        user.setUsername(username);
+
+        Intent intent = new Intent(this,ProfileFragment.class );
+        intent.putExtra("username", username);
+
+
 
         //Get the text in EditText view
         String text1 = et1.getText().toString();

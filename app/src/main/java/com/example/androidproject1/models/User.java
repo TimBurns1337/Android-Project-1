@@ -1,6 +1,8 @@
 package com.example.androidproject1.models;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private String username;
     // TODO: Leave the above for now - only allow for update on the below

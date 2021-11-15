@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.androidproject1.models.User;
+
 public class UpdateProfileActivity extends AppCompatActivity {
 
     Button btn;
@@ -53,6 +55,9 @@ public class UpdateProfileActivity extends AppCompatActivity {
 //                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 //                ft.replace(R.id.profile_Frag, new ProfileFragment()).commit();
                 // TODO:  do all updating before reaching finish
+
+                // Use user or userdoa??? - new?
+
 
                 finish();
             }

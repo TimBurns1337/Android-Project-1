@@ -113,7 +113,7 @@
         app:layout_constraintTop_toBottomOf="@+id/bg_ek3" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/sex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/gender"

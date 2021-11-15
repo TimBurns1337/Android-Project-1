@@ -15,11 +15,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.androidproject1.dao.UserDao;
+import com.example.androidproject1.models.User;
 
 public class ProfileFragment extends Fragment {
 
     private ProfileViewModel mViewModel;
+    private UserDao userDao;
+    private User user = new User();
+    EditText userName;
+
     TextView ProfileFname;
     TextView ProfileLname;
     TextView DOB;
@@ -28,6 +36,7 @@ public class ProfileFragment extends Fragment {
     TextView Height;
 
     String FName, LName, dob, sex, weight, height;
+    String UserName = "";
 
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
@@ -47,7 +56,20 @@ public class ProfileFragment extends Fragment {
         Sex = view.findViewById(R.id.sextext);
         Weight = view.findViewById(R.id.ET_pro_weight);
         Height = view.findViewById(R.id.heighttext);
+
         // TODO: add code to get data from db to populate these textviews
+        //userName = view.findViewById(R.id.name); // getting from reg page
+        //UserName = userName.getText().toString();
+
+        Bundle profile = getActivity().getIntent().getExtras();
+        UserName =  profile.getString("username");
+
+        //UserName = getActivity().getIntent().getExtra("username");
+        //UserName = user.getUsername();
+        //userDao.getUserByUsername(UserName);
+
+        //testing - not working
+        ProfileFname.setText(UserName);
 
 
 
