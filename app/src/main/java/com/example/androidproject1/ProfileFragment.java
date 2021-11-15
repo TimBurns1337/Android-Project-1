@@ -58,18 +58,19 @@ public class ProfileFragment extends Fragment {
         Height = view.findViewById(R.id.heighttext);
 
         // TODO: add code to get data from db to populate these textviews
+        // TODO: need some way to get username to pul down data from db - below is no working
         //userName = view.findViewById(R.id.name); // getting from reg page
         //UserName = userName.getText().toString();
-
-        Bundle profile = getActivity().getIntent().getExtras();
-        UserName =  profile.getString("username");
-
-        //UserName = getActivity().getIntent().getExtra("username");
-        //UserName = user.getUsername();
-        //userDao.getUserByUsername(UserName);
-
-        //testing - not working
-        ProfileFname.setText(UserName);
+//
+//        Bundle profile = getActivity().getIntent().getExtras();
+//        UserName =  profile.getString("username");
+//
+//        //UserName = getActivity().getIntent().getExtra("username");
+//        //UserName = user.getUsername();
+//        //userDao.getUserByUsername(UserName);
+//
+//        //testing - not working
+//        ProfileFname.setText(UserName);
 
 
 
