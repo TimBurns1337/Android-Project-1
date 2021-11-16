@@ -41,7 +41,7 @@
     <string name="sign_up_string">Sign Up</string>
     <string name="login_string">Login</string>
     <string name="sign_up_ek1_string">Sign Up</string>
-    <string name="name_string">Name</string>
+    <string name="username_string">Username</string>
     <string name="i_would_like_to_receive_your_newsletter_and_other_promotional_information__string">I would like to receive your newsletter and other promotional information.</string>
     <string name="mon_string">Mon</string>
     <string name="_15_string">15</string>
@@ -91,6 +91,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="logout_button">Logout</string>
 
     <string name="menu_home">Home/Search</string>
     <string name="menu_profile">Profile</string>

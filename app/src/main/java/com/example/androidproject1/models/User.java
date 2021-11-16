@@ -15,6 +15,8 @@ public class User implements Serializable {
     private String weight;
     private String height;
 
+    public User(){}
+
     // TODO: use this constructor to update user info
     public User(String password, String email, String fname, String lname,
                 String dob, String sex, String weight, String height) {
@@ -28,7 +30,6 @@ public class User implements Serializable {
         this.height = height;
     }
 
-    public User(){}
     public User(String username, String email, String password) {
         this.username = username;
         this.password = password;

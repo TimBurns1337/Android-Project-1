@@ -78,17 +78,17 @@
 
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:layout_marginBottom="32dp"
-        android:hint="@string/name_string"
+        android:hint="@string/username_string"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/gl_10pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
         app:layout_constraintBottom_toTopOf="@+id/bg_ek1"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_ek1"	/>
+        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
+        app:layout_constraintStart_toStartOf="@+id/gl_10pc"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_ek1" />
 
     <ImageView
         android:id="@+id/bg_ek1"
@@ -129,7 +129,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bg_ek1" />
 
-
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
@@ -137,6 +136,7 @@
         android:layout_marginTop="24dp"
         android:hint="@string/password_string"
         android:textSize="20sp"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toStartOf="@+id/vector"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/gl_10pc"
