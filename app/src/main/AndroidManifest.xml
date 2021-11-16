@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidProject1">
         <activity
+            android:name=".ViewWorkoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WorkoutList"
+            android:exported="false" />
+        <activity
             android:name=".UpdateProfileActivity"
             android:exported="false" />
         <activity
