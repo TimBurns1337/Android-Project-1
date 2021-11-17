@@ -23,11 +23,6 @@
             android:title="@string/menu_community" />
 
         <item
-            android:id="@+id/nav_compete"
-            android:icon="@drawable/ic_baseline_sports_kabaddi_24"
-            android:title="@string/menu_compete" />
-
-        <item
             android:id="@+id/nav_sched"
             android:icon="@drawable/ic_baseline_schedule_24"
             android:title="@string/menu_sched" />

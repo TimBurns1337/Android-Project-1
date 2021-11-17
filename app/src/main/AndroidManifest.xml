@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidProject1">
         <activity
+            android:name=".LeaderboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CompeteActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewWorkoutActivity"
             android:exported="false" />
         <activity

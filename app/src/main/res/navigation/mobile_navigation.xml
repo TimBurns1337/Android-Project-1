@@ -30,22 +30,10 @@
         tools:layout="@layout/community_fragment" />
 
     <fragment
-        android:id="@+id/nav_compete"
-        android:name="com.example.androidproject1.CompeteFragment"
-        android:label="@string/menu_compete"
-        tools:layout="@layout/compete_fragment" />
-
-    <fragment
         android:id="@+id/nav_sched"
         android:name="com.example.androidproject1.ScheduleWorkoutFragment"
         android:label="@string/menu_sched"
         tools:layout="@layout/schedule_workout_fragment" />
-
-    <fragment
-        android:id="@+id/nav_submit_workout"
-        android:name="com.example.androidproject1.SubmitWorkoutFragment"
-        android:label="@string/menu_submit"
-        tools:layout="@layout/submit_workout_fragment" />
 
     <fragment
         android:id="@+id/nav_notifcations"
