@@ -63,12 +63,15 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.12135416666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.12135416666666667" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.24114583333333334" />
-        <entry key="app/src/main/res/layout/activity_view_workout.xml" value="0.24707516367504173" />
+        <entry key="app/src/main/res/layout/activity_view_workout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_workout_list.xml" value="0.22708333333333333" />
+        <entry key="app/src/main/res/layout/activity_workout_search.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/compete_fragment.xml" value="0.24114583333333334" />
+        <entry key="app/src/main/res/layout/content_workout_search.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3096026511151244" />
-        <entry key="app/src/main/res/layout/item.xml" value="0.2686927614920141" />
+        <entry key="app/src/main/res/layout/item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/video_item.xml" value="0.21435185185185185" />
       </map>
     </option>
   </component>
