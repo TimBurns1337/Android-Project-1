@@ -73,6 +73,10 @@ public class CompeteActivity  extends AppCompatActivity {
                 public void onClick(View view) {
 
                     friendButtonClick((AppCompatButton) view);
+                    // after handling the click, remove button from list on this view
+                    // note: the names will show up again if you go back and forth
+                    ll.removeView(view);
+                    
                 }
             });
 
@@ -89,6 +93,8 @@ public class CompeteActivity  extends AppCompatActivity {
         ChallengeDao cd = new ChallengeDao();
         Challenge c = new Challenge(userEmail, String.valueOf(btn.getText()));
         cd.addChallege(c);
+
+
 
     }
 
