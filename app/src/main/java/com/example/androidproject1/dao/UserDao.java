@@ -34,4 +34,10 @@ public class UserDao {
         return df.child(username).get();
     }
 
+    // return max number of random usernames
+    public Task<DataSnapshot> getAllUsers() {
+
+        return df.get();
+    }
+
 }

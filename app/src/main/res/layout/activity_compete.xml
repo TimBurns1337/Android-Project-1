@@ -38,24 +38,34 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <!-- Scrollview -->
     <ScrollView
-        android:layout_marginTop="100dp"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_ek1"
+        app:layout_constraintTop_toBottomOf="@+id/gl_20pc"
+        app:layout_constraintStart_toStartOf="@id/gl_4pc"
+        app:layout_constraintEnd_toEndOf="@id/gl_96pc">
 
-        <RelativeLayout android:id="@+id/content_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+        <LinearLayout
+            android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <!-- <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Username placeholder"
+                android:background="@drawable/rectangle_25_ek1_shape"
+                />-->
+
+
+
+            <!--
             <ImageView
                 android:id="@+id/rectangle_25_ek1"
                 android:layout_width="match_parent"
@@ -120,46 +130,34 @@
                 android:layout_marginBottom="15dp"
                 android:contentDescription="mask_group_ek1"
                 android:src="@drawable/vector_burn" />
+            -->
 
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
     <!-- Start of guidelines -->
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_10pc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.10" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_90pc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.90" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_91pc"
+        android:id="@+id/gl_20pc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.91" />
+        app:layout_constraintGuide_percent="0.20" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_56pc"
+        android:id="@+id/gl_4pc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.56" />
+        app:layout_constraintGuide_percent="0.04" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_44pc"
+        android:id="@+id/gl_96pc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.44" />
+        app:layout_constraintGuide_percent="0.96" />
 
     <!-- End of guidelines -->
 
