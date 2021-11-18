@@ -180,9 +180,10 @@ public class RegisterActivity extends AppCompatActivity {
         // data base reference will sends data to firebase.
         // below line is used to get reference for our database.
         databaseReference = firebaseDatabase.getInstance().getReference("User");
-        String id = databaseReference.push().getKey();
+        String id = firebaseAuth.getCurrentUser().getUid();
         databaseReference.child(id).setValue(user);
 
         Intent intent = new Intent(this, LoginActivity.class );
+        startActivity(intent);
     }
 }
