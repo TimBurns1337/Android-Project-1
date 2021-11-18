@@ -44,6 +44,7 @@ public class ProfileFragment extends Fragment {
 
     String FName, LName, dob, sex, weight, height;
     String UserName = "";
+    private FirebaseAuth firebaseAuth;
 
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
@@ -79,7 +80,8 @@ public class ProfileFragment extends Fragment {
 //        //testing - not working
 //        ProfileFname.setText(UserName);
 
-        FirebaseAuth firebaseAuth = null;
+//        private FirebaseAuth firebaseAuth;
+        firebaseAuth = FirebaseAuth.getInstance();
         String uid = firebaseAuth.getCurrentUser().getUid();
         Log.d("myapp-uid", uid);
 
