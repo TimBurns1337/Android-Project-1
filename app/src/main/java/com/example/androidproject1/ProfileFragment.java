@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +21,18 @@ import android.widget.TextView;
 
 import com.example.androidproject1.dao.UserDao;
 import com.example.androidproject1.models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ProfileFragment extends Fragment {
 
     private ProfileViewModel mViewModel;
     private UserDao userDao;
-    private User user = new User();
+    private User user;
     EditText userName;
 
     TextView ProfileFname;
@@ -37,6 +44,7 @@ public class ProfileFragment extends Fragment {
 
     String FName, LName, dob, sex, weight, height;
     String UserName = "";
+    private FirebaseAuth firebaseAuth;
 
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
@@ -72,6 +80,27 @@ public class ProfileFragment extends Fragment {
 //        //testing - not working
 //        ProfileFname.setText(UserName);
 
+//        private FirebaseAuth firebaseAuth;
+        firebaseAuth = FirebaseAuth.getInstance();
+        String uid = firebaseAuth.getCurrentUser().getUid();
+        Log.d("myapp-uid", uid);
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("User");
+        rootRef.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                user = dataSnapshot.getValue(User.class);
+                Log.d("myapp-email", user.getEmail());
+                Log.d("myapp-username", user.getUsername());
+                // Do something with the retrieved data or Bruce Wayne
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("UserListActivity", "Error occured");
+                // Do something about the error
+            }
+        });
 
 
 
