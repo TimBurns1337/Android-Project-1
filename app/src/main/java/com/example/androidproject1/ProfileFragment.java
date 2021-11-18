@@ -32,7 +32,7 @@ public class ProfileFragment extends Fragment {
 
     private ProfileViewModel mViewModel;
     private UserDao userDao;
-    private User user = new User();
+    private User user;
     EditText userName;
 
     TextView ProfileFname;
@@ -87,7 +87,7 @@ public class ProfileFragment extends Fragment {
         rootRef.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
+                user = dataSnapshot.getValue(User.class);
                 Log.d("myapp-email", user.getEmail());
                 Log.d("myapp-username", user.getUsername());
                 // Do something with the retrieved data or Bruce Wayne
