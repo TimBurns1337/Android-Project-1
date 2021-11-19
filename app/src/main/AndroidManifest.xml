@@ -16,7 +16,10 @@
             android:name=".LeaderboardActivity"
             android:exported="false" />
         <activity
-            android:name=".CompeteActivity"
+            android:name=".ChallengeRequestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChallengeActivity"
             android:exported="false" />
         <activity
             android:name=".ViewWorkoutActivity"

@@ -4,10 +4,11 @@
     <string name="your_workout_plan_30___mins_string">Your workout plan30 ~ mins</string>
     <string name="pushup">Pushup: 2.5 mins</string>
     <string name="community_ek3_string">Community</string>
-    <string name="workout_with_friends_string">Workout\nwith\nFriends</string>
+    <string name="challenge_requests_string">Challenge\nRequests</string>
     <string name="share_your_progress_string">Share\nyour\nProgress</string>
     <string name="leaderboard_string">Leaderboard</string>
     <string name="compete_with_friends_string">Compete\nwith\nFriends</string>
+    <string name="compete_requests_string">Compete\nRequests</string>
     <string name="challenge_friends_string">Challenge Friends</string>
     <string name="renee_olson_string">Renee Olson</string>
     <string name="renee_olson_ek1_string">Renee Olson</string>

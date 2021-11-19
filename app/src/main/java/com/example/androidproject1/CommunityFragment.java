@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +35,7 @@ public class CommunityFragment extends Fragment {
         competeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CompeteActivity.class );
+                Intent intent = new Intent(getActivity(), ChallengeActivity.class );
 
                 startActivity(intent);
             }
@@ -53,17 +52,19 @@ public class CommunityFragment extends Fragment {
         });
 
 
-        Button workoutBtn = (Button) view.findViewById(R.id.workout_with_friends_btn);
-        workoutBtn.setOnClickListener(new View.OnClickListener() {
+        Button competeReqBtn = (Button) view.findViewById(R.id.compete_requests_btn);
+        competeReqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO
+                Intent intent = new Intent(getActivity(), ChallengeRequestActivity.class );
+
+                startActivity(intent);
                 // workout requests
             }
         });
 
         Button shareBtn = (Button) view.findViewById(R.id.share_your_progress_btn);
-        workoutBtn.setOnClickListener(new View.OnClickListener() {
+        shareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO

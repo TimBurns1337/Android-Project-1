@@ -51,10 +51,10 @@
         app:layout_constraintTop_toBottomOf="@+id/gl_34pc" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/leaderboard_btn"
+        android:id="@+id/compete_requests_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/leaderboard_string"
+        android:text="@string/compete_requests_string"
         android:background="@drawable/rectangle_2_ek2"
         app:layout_constraintBottom_toTopOf="@+id/gl_60pc"
         app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
@@ -62,15 +62,15 @@
         app:layout_constraintTop_toBottomOf="@+id/gl_34pc" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/workout_with_friends_btn"
+        android:id="@+id/leaderboard_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/workout_with_friends_string"
+        android:text="@string/leaderboard_string"
         android:background="@drawable/rectangle_2_ek2"
         app:layout_constraintBottom_toTopOf="@+id/gl_86pc"
         app:layout_constraintEnd_toStartOf="@+id/gl_44pc"
         app:layout_constraintStart_toStartOf="@+id/gl_10pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_60pc" />
+        app:layout_constraintTop_toBottomOf="@+id/gl_60pc"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/share_your_progress_btn"
