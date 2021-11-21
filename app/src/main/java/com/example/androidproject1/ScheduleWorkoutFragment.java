@@ -8,19 +8,34 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
 
+import com.example.androidproject1.models.ScheduleWorkout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ScheduleWorkoutFragment extends Fragment {
 
     private ScheduleWorkoutViewModel mViewModel;
+    RecyclerView recyclerView;
+    DatabaseReference database;
+    ScheduleWorkoutListAdapter myAdapter;
+    ArrayList<ScheduleWorkout> workouts;
 
     public static ScheduleWorkoutFragment newInstance() {
         return new ScheduleWorkoutFragment();
@@ -31,14 +46,41 @@ public class ScheduleWorkoutFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.schedule_workout_fragment, container, false);
 
+        recyclerView = (RecyclerView)view.findViewById(R.id.scheduleWorkout);
+        database = FirebaseDatabase.getInstance().getReference("Schedule");
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        workouts = new ArrayList<>();
+        myAdapter = new ScheduleWorkoutListAdapter(getActivity(),workouts);
+        recyclerView.setAdapter(myAdapter);
+
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+
+                    ScheduleWorkout workout = dataSnapshot.getValue(ScheduleWorkout.class);
+                    workouts.add(workout);
 
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        mViewModel = new ViewModelProvider(this).get(ScheduleWorkoutViewModel.class);
-//        // TODO: Use the ViewModel
-//    }
+                }
+                myAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
+
         CalendarView calendar = (CalendarView) view.findViewById(R.id.calendarview);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         final String[] selectedDate = {sdf.format(new Date(calendar.getDate()))};;
@@ -62,7 +104,8 @@ public class ScheduleWorkoutFragment extends Fragment {
 
             startActivity(i);
         }
-    });
+        });
 
-        return view;}
+        return view;
+    }
 }

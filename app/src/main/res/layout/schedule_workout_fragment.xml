@@ -36,79 +36,88 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calendarview" />
 
-    <ScrollView
-        android:id="@+id/rectangle_ek1"
-        android:layout_width="0dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/scheduleWorkout"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sched_workout"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/sched_workout" />
 
-        <RelativeLayout
-            android:id="@+id/content_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+<!--    <ScrollView-->
+<!--        android:id="@+id/rectangle_ek1"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/sched_workout"-->
+<!--        app:layout_constraintVertical_bias="1.0">-->
 
-            <ImageView
-                android:id="@+id/rectangle_25_ek1"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/rectangle_23_shape" />
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/content_container"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content">-->
 
-            <ImageView
-                android:id="@+id/mask_group_ek1"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_alignStart="@+id/rectangle_25_ek1"
-                android:layout_alignTop="@+id/rectangle_25_ek1"
-                android:layout_alignBottom="@+id/rectangle_25_ek1"
-                android:layout_marginStart="20dp"
-                android:contentDescription="mask_group_ek1"
-                android:src="@drawable/mask_group_ek1" />
+<!--            <ImageView-->
+<!--                android:id="@+id/rectangle_25_ek1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_alignParentStart="true"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_marginStart="30dp"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:layout_marginEnd="30dp"-->
+<!--                android:layout_marginBottom="30dp"-->
+<!--                android:background="@drawable/rectangle_23_shape" />-->
 
-            <TextView
-                android:id="@+id/renee_olson_ek1"
-                android:layout_width="91dp"
-                android:layout_height="27dp"
-                android:layout_alignTop="@+id/rectangle_25_ek1"
-                android:layout_alignBottom="@+id/rectangle_25_ek1"
-                android:layout_gravity="center_horizontal|center"
-                android:layout_marginStart="20dp"
-                android:layout_toEndOf="@+id/mask_group_ek1"
-                android:fontFamily="Roboto"
-                android:gravity="center"
-                android:shadowColor="#000"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="2"
-                android:text="@string/renee_olson_ek1_string"
-                android:textColor="@color/challenge_friends_color"
-                android:textSize="14sp" />
+<!--            <ImageView-->
+<!--                android:id="@+id/mask_group_ek1"-->
+<!--                android:layout_width="36dp"-->
+<!--                android:layout_height="36dp"-->
+<!--                android:layout_alignStart="@+id/rectangle_25_ek1"-->
+<!--                android:layout_alignTop="@+id/rectangle_25_ek1"-->
+<!--                android:layout_alignBottom="@+id/rectangle_25_ek1"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:contentDescription="mask_group_ek1"-->
+<!--                android:src="@drawable/mask_group_ek1" />-->
 
-            <ImageView
-                android:id="@+id/calendar"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_alignTop="@+id/rectangle_25_ek1"
-                android:layout_alignEnd="@+id/rectangle_25_ek1"
-                android:layout_alignBottom="@+id/rectangle_25_ek1"
-                android:layout_marginEnd="20dp"
-                android:contentDescription="mask_group_ek1"
-                android:src="@drawable/calendar" />
+<!--            <TextView-->
+<!--                android:id="@+id/renee_olson_ek1"-->
+<!--                android:layout_width="91dp"-->
+<!--                android:layout_height="27dp"-->
+<!--                android:layout_alignTop="@+id/rectangle_25_ek1"-->
+<!--                android:layout_alignBottom="@+id/rectangle_25_ek1"-->
+<!--                android:layout_gravity="center_horizontal|center"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_toEndOf="@+id/mask_group_ek1"-->
+<!--                android:fontFamily="Roboto"-->
+<!--                android:gravity="center"-->
+<!--                android:shadowColor="#000"-->
+<!--                android:shadowDx="1"-->
+<!--                android:shadowDy="1"-->
+<!--                android:shadowRadius="2"-->
+<!--                android:text="@string/renee_olson_ek1_string"-->
+<!--                android:textColor="@color/challenge_friends_color"-->
+<!--                android:textSize="14sp" />-->
 
-        </RelativeLayout>
-    </ScrollView>
+<!--            <ImageView-->
+<!--                android:id="@+id/calendar"-->
+<!--                android:layout_width="36dp"-->
+<!--                android:layout_height="36dp"-->
+<!--                android:layout_alignTop="@+id/rectangle_25_ek1"-->
+<!--                android:layout_alignEnd="@+id/rectangle_25_ek1"-->
+<!--                android:layout_alignBottom="@+id/rectangle_25_ek1"-->
+<!--                android:layout_marginEnd="20dp"-->
+<!--                android:contentDescription="mask_group_ek1"-->
+<!--                android:src="@drawable/calendar" />-->
+
+<!--        </RelativeLayout>-->
+<!--    </ScrollView>-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_10pc"

@@ -25,6 +25,7 @@ public class ScheduleWorkoutListActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Workout> workouts;
     ScheduleViewWorkoutAdapter myAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
