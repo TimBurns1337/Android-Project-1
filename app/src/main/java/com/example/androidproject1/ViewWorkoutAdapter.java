@@ -1,10 +1,12 @@
 package com.example.androidproject1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,7 +45,7 @@ public class ViewWorkoutAdapter extends RecyclerView.Adapter<ViewWorkoutAdapter.
         return list.size();
     }
 
-    public static class MyHolder extends RecyclerView.ViewHolder {
+    public static class MyHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
 
         TextView workoName, workoTime;
 
@@ -52,6 +54,15 @@ public class ViewWorkoutAdapter extends RecyclerView.Adapter<ViewWorkoutAdapter.
 
             workoName = itemView.findViewById(R.id.workoName);
             workoTime = itemView.findViewById(R.id.workoTime);
+            itemView.setOnClickListener(this);
+        }
+
+        public void onClick(View v) {
+            int postion = getAdapterPosition();
+            Toast.makeText(v.getContext(), "postion"+postion, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(v.getContext() , TimerActivity.class);
+            intent.putExtra("name" , workoName.getText());
+            v.getContext().startActivity(intent);
         }
 
     }
