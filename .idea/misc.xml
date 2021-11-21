@@ -79,6 +79,8 @@
         <entry key="..\:/new/app/src/main/res/layout/fragment_home.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/plan_workout_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/schedule_workout_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_view_workout.xml" value="0.24114583333333334" />
+        <entry key="app/src/main/res/layout/item.xml" value="0.22708333333333333" />
       </map>
     </option>
   </component>

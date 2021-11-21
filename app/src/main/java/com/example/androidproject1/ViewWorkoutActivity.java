@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.androidproject1.models.Workout;
 import com.example.androidproject1.models.WorkoutPlaylist;
 import com.google.firebase.database.DataSnapshot;
@@ -25,8 +25,9 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     DatabaseReference database;
-    detailedWorkoutAdapter myAdapter;
+    ViewWorkoutAdapter myAdapter;
     ArrayList<WorkoutPlaylist> workouts;
+    Workout workout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +40,33 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.detWorkoutName);
         textView.setText(name);
+        ImageView imageView = findViewById(R.id.workImgFull);
+
 
         recyclerView = findViewById(R.id.workoutView);
         database = FirebaseDatabase.getInstance().getReference("Workout");
+
+        DatabaseReference work = database.child(name);
+
+        work.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                workout = dataSnapshot.getValue(Workout.class);
+                Glide.with(ViewWorkoutActivity.this).load(workout.getWorkoutImg()).centerCrop().into(imageView);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+
+        });
+
+
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         workouts = new ArrayList<>();
-        myAdapter = new detailedWorkoutAdapter(this,workouts);
+        myAdapter = new ViewWorkoutAdapter(this,workouts);
 
         recyclerView.setAdapter(myAdapter);
 
