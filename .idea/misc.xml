@@ -64,6 +64,21 @@
         <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/notifications_fragment.xml" value="0.1693840579710145" />
         <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/plan_workout_fragment.xml" value="0.13385416666666666" />
         <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/menu/workout_search.xml" value="0.25416666666666665" />
+        <entry key="..\:/new/app/src/main/res/drawable-nodpi/__divider_ek5_shape.xml" value="0.5703125" />
+        <entry key="..\:/new/app/src/main/res/drawable-nodpi/_bg__register_ek2_shape.xml" value="0.5703125" />
+        <entry key="..\:/new/app/src/main/res/drawable-nodpi/_bg__welcome_ek2_shape.xml" value="0.5703125" />
+        <entry key="..\:/new/app/src/main/res/drawable-nodpi/clear.xml" value="0.5703125" />
+        <entry key="..\:/new/app/src/main/res/drawable-nodpi/rectangle_6_shape.xml" value="0.5703125" />
+        <entry key="..\:/new/app/src/main/res/drawable/calendar_colors.xml" value="0.5703125" />
+        <entry key="..\:/new/app/src/main/res/drawable/calendat_button.xml" value="0.5703125" />
+        <entry key="..\:/new/app/src/main/res/layout/activity_challenge.xml" value="0.5541666666666667" />
+        <entry key="..\:/new/app/src/main/res/layout/activity_schedule_workout_list.xml" value="0.25" />
+        <entry key="..\:/new/app/src/main/res/layout/activity_update_profile.xml" value="0.5541666666666667" />
+        <entry key="..\:/new/app/src/main/res/layout/activity_view_workout.xml" value="0.5541666666666667" />
+        <entry key="..\:/new/app/src/main/res/layout/activity_workout_list.xml" value="0.5541666666666667" />
+        <entry key="..\:/new/app/src/main/res/layout/fragment_home.xml" value="0.5541666666666667" />
+        <entry key="..\:/new/app/src/main/res/layout/plan_workout_fragment.xml" value="0.5541666666666667" />
+        <entry key="..\:/new/app/src/main/res/layout/schedule_workout_fragment.xml" value="0.1" />
       </map>
     </option>
   </component>

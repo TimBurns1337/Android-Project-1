@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidproject1.models.Workout;
+import com.example.androidproject1.models.WorkoutPlaylist;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,36 +21,49 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ScheduleWorkoutListActivity extends AppCompatActivity {
-    DatabaseReference database;
+public class ScheduleViewWorkoutActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    ArrayList<Workout> workouts;
-    ScheduleViewWorkoutAdapter myAdapter;
+    DatabaseReference database;
+    ScheduleAddWorkoutAdapter myAdapter;
+    ArrayList<WorkoutPlaylist> workouts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_schedule_workout_list);
+        setContentView(R.layout.activity_view_workout);
 
+        //geting data from adapter
         Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
         String date = intent.getStringExtra("date");
 
-        recyclerView = findViewById(R.id.workoutList);
+        TextView textView = findViewById(R.id.detWorkoutName);
+        textView.setText(name);
+
+        recyclerView = findViewById(R.id.workoutView);
         database = FirebaseDatabase.getInstance().getReference("Workout");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         workouts = new ArrayList<>();
-        myAdapter = new ScheduleViewWorkoutAdapter(this, workouts, date);
+        myAdapter = new ScheduleAddWorkoutAdapter(this, workouts, date);
+
         recyclerView.setAdapter(myAdapter);
 
-        database.addValueEventListener(new ValueEventListener() {
+        database.child(name).child("workout_playlist").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Workout workout = dataSnapshot.getValue(Workout.class);
+
+                    WorkoutPlaylist workout = dataSnapshot.getValue(WorkoutPlaylist.class);
+
                     workouts.add(workout);
+
+
                 }
                 myAdapter.notifyDataSetChanged();
+
             }
 
             @Override

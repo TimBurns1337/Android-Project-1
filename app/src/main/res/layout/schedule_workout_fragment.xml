@@ -5,265 +5,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#090030"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="@string/april_string"
-        android:textColor="@color/login_ek3_color"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/image" />
-
-
-    <HorizontalScrollView
+    <!-- Scrollview -->
+    <CalendarView
+        android:id="@+id/calendarview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/currentDate"
+        android:layout_gravity="center"
+        android:background="@drawable/calendar_background"
+        android:theme="@style/CalenderViewCustom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/sched_workout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:onClick="movetoSched"
+        android:text="Add Workout"
+        android:backgroundTint="@color/colorAccent"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:insetRight="0dp"
+        android:insetLeft="0dp"
+        android:radius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendarview" />
+
+    <ScrollView
+        android:id="@+id/rectangle_ek1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/month"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:fillViewport="true">
+        app:layout_constraintTop_toBottomOf="@+id/sched_workout"
+        app:layout_constraintVertical_bias="1.0">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="7"
-            android:gravity="center">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:width="0dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="Sun"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="15"
-                    android:textColor="#fff" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:width="0dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="Mon"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="16"
-                    android:textColor="#fff" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:width="0dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="Tue"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="17"
-                    android:textColor="#fff" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:width="0dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="Wed"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="18"
-                    android:textColor="#fff" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:width="0dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="Thu"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="19"
-                    android:textColor="#fff" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:width="0dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="Sat"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20"
-                    android:textColor="#fff" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:width="0dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:background="@drawable/rectangle_4_shape"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="Sun"
-                    android:textColor="#fff" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="21"
-                    android:textColor="#fff" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </HorizontalScrollView>
-
-    <TextView
-        android:id="@+id/currentDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:text="Sunday, 21 Apr 2021"
-        android:textColor="#fff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/rectangle_ek1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <ImageView android:id="@+id/rectangle_ek1"
-        android:background="@drawable/rectangle_ek1_shape"
-        android:layout_marginTop="300dp"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-
-        />
-
-    <!-- Scrollview -->
-    <ScrollView
-        android:layout_marginTop="300dp"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
-        <RelativeLayout android:id="@+id/content_container"
+        <RelativeLayout
+            android:id="@+id/content_container"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/rectangle_25_ek1"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_alignParentStart="true"
-
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="30dp"
@@ -294,12 +88,12 @@
                 android:layout_toEndOf="@+id/mask_group_ek1"
                 android:fontFamily="Roboto"
                 android:gravity="center"
-                android:text="@string/renee_olson_ek1_string"
-                android:textColor="@color/challenge_friends_color"
                 android:shadowColor="#000"
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
+                android:text="@string/renee_olson_ek1_string"
+                android:textColor="@color/challenge_friends_color"
                 android:textSize="14sp" />
 
             <ImageView
@@ -315,7 +109,6 @@
 
         </RelativeLayout>
     </ScrollView>
-    <!-- Start of guidelines -->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_10pc"
@@ -352,15 +145,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.44" />
 
-    <Button
-        android:id="@+id/sched_workout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
-        app:layout_constraintStart_toStartOf="@+id/gl_56pc"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="movetoSched"/>
+
 
     <!-- End of guidelines -->
 

@@ -25,6 +25,9 @@
             android:name=".ViewWorkoutActivity"
             android:exported="false" />
         <activity
+            android:name=".ScheduleViewWorkoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".WorkoutList"
             android:exported="false" />
         <activity

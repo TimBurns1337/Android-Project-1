@@ -13,6 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ScheduleWorkoutFragment extends Fragment {
 
@@ -35,14 +39,26 @@ public class ScheduleWorkoutFragment extends Fragment {
 //        mViewModel = new ViewModelProvider(this).get(ScheduleWorkoutViewModel.class);
 //        // TODO: Use the ViewModel
 //    }
+        CalendarView calendar = (CalendarView) view.findViewById(R.id.calendarview);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        final String[] selectedDate = {sdf.format(new Date(calendar.getDate()))};;
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
+                month = month + 1;
+                selectedDate[0] = String.valueOf(day + "/" + month + "/" + year);
+            }
+        });
 
-    Button btn = (Button) view.findViewById(R.id.sched_workout);
+
+        Button btn = (Button) view.findViewById(R.id.sched_workout);
         btn.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick(View v){
+
             Intent i = new Intent(getActivity(),ScheduleWorkoutListActivity.class);
             // TODO: get data from textview
-
+            i.putExtra("date", selectedDate[0]);
 
             startActivity(i);
         }
