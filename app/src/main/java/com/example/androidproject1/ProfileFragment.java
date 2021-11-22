@@ -35,6 +35,7 @@ public class ProfileFragment extends Fragment {
     private User user;
     EditText userName;
 
+    TextView Username;
     TextView ProfileFname;
     TextView ProfileLname;
     TextView DOB;
@@ -42,7 +43,7 @@ public class ProfileFragment extends Fragment {
     TextView Weight;
     TextView Height;
 
-    String FName, LName, dob, sex, weight, height;
+    String Uname, FName, LName, dob, sex, weight, height;
     String UserName = "";
     private FirebaseAuth firebaseAuth;
 
@@ -58,6 +59,7 @@ public class ProfileFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
+        Username = view.findViewById(R.id.username);
         ProfileFname = view.findViewById(R.id.profile_fname);
         ProfileLname = view.findViewById(R.id.profile_lname);
         DOB = view.findViewById(R.id.dobtext);
@@ -93,7 +95,14 @@ public class ProfileFragment extends Fragment {
                 Log.d("myapp-email", user.getEmail());
                 Log.d("myapp-username", user.getUsername());
                 // Do something with the retrieved data or Bruce Wayne
-                ProfileFname.setText(user.getUsername());
+
+                Username.setText(user.getUsername());
+                ProfileFname.setText(user.getFname());
+                ProfileLname.setText(user.getLname());
+                DOB.setText(user.getDob());
+                Sex.setText(user.getSex());
+                Weight.setText(user.getWeight());
+                Height.setText(user.getHeight());
             }
 
             @Override
