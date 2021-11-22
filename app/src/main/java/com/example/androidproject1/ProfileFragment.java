@@ -93,6 +93,7 @@ public class ProfileFragment extends Fragment {
                 Log.d("myapp-email", user.getEmail());
                 Log.d("myapp-username", user.getUsername());
                 // Do something with the retrieved data or Bruce Wayne
+                ProfileFname.setText(user.getUsername());
             }
 
             @Override

@@ -6,11 +6,18 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.androidproject1.models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class UpdateProfileActivity extends AppCompatActivity {
 
@@ -19,10 +26,34 @@ public class UpdateProfileActivity extends AppCompatActivity {
     EditText fname, lname, dob, sex, weight, height;
     String FName, LName, DOB, Sex, Weight, Height;
 
+    private User user;
+    private FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        String uid = firebaseAuth.getCurrentUser().getUid();
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("User");
+        rootRef.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                user = dataSnapshot.getValue(User.class);
+                Log.d("myapp-email", user.getEmail());
+                Log.d("myapp-username", user.getUsername());
+                // Do something with the retrieved data or Bruce Wayne
+                //ProfileFname.setText(user.getUsername());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("UserListActivity", "Error occured");
+                // Do something about the error
+            }
+        });
 
         fname = findViewById(R.id.et_fname);
         lname = findViewById(R.id.et_lname);
