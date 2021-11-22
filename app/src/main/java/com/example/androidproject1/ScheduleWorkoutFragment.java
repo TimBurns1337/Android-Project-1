@@ -46,13 +46,17 @@ public class ScheduleWorkoutFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.schedule_workout_fragment, container, false);
 
+        CalendarView calendar = (CalendarView) view.findViewById(R.id.calendarview);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        final String[] selectedDate = {sdf.format(new Date(calendar.getDate()))};
+
         recyclerView = (RecyclerView)view.findViewById(R.id.scheduleWorkout);
         database = FirebaseDatabase.getInstance().getReference("Schedule");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         workouts = new ArrayList<>();
-        myAdapter = new ScheduleWorkoutListAdapter(getActivity(),workouts);
+        myAdapter = new ScheduleWorkoutListAdapter(getActivity(), workouts, selectedDate[0]);
         recyclerView.setAdapter(myAdapter);
 
         database.addValueEventListener(new ValueEventListener() {
@@ -60,12 +64,14 @@ public class ScheduleWorkoutFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-
-                    ScheduleWorkout workout = dataSnapshot.getValue(ScheduleWorkout.class);
-                    workouts.add(workout);
-
-
+                    String workout = dataSnapshot.child("workout").getValue().toString();
+                    String date = dataSnapshot.child("date").getValue().toString();
+                    if(date.equals( selectedDate[0])) {
+                        ScheduleWorkout sw = new ScheduleWorkout(workout, date);
+                        workouts.add(sw);
+                    }
                 }
+
                 myAdapter.notifyDataSetChanged();
 
             }
@@ -77,18 +83,15 @@ public class ScheduleWorkoutFragment extends Fragment {
         });
 
 
-
-
-
-
-        CalendarView calendar = (CalendarView) view.findViewById(R.id.calendarview);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        final String[] selectedDate = {sdf.format(new Date(calendar.getDate()))};;
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
                 month = month + 1;
                 selectedDate[0] = String.valueOf(day + "/" + month + "/" + year);
+
+                //CHANGE DATA IN RECYCLER
+
+
             }
         });
 

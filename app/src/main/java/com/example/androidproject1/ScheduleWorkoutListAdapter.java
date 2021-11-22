@@ -18,10 +18,12 @@ import java.util.ArrayList;
 
 public class ScheduleWorkoutListAdapter  extends RecyclerView.Adapter<ScheduleWorkoutListAdapter.MyViewHolder>  {
     Context context;
+    String date;
     ArrayList<ScheduleWorkout> list;
 
-    public ScheduleWorkoutListAdapter(Context context, ArrayList<ScheduleWorkout> list) {
+    public ScheduleWorkoutListAdapter(Context context, ArrayList<ScheduleWorkout> list, String date) {
         this.context = context;
+        this.date = date;
         this.list = list;
     }
 

@@ -43,7 +43,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sched_workout" />
+        app:layout_constraintTop_toBottomOf="@+id/sched_workout"
+        android:background="#1d153e"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"/>
 
 <!--    <ScrollView-->
 <!--        android:id="@+id/rectangle_ek1"-->

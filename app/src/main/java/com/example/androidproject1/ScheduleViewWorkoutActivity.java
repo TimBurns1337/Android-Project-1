@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ public class ScheduleViewWorkoutActivity extends AppCompatActivity {
     DatabaseReference database;
     ScheduleAddWorkoutAdapter myAdapter;
     ArrayList<WorkoutPlaylist> workouts;
+    Workout workout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +42,25 @@ public class ScheduleViewWorkoutActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.detWorkoutName);
         textView.setText(name);
+        ImageView imageView = findViewById(R.id.workImgFull);
 
         recyclerView = findViewById(R.id.workoutView);
         database = FirebaseDatabase.getInstance().getReference("Workout");
+
+        DatabaseReference work = database.child(name);
+
+        work.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                workout = dataSnapshot.getValue(Workout.class);
+                Glide.with(ScheduleViewWorkoutActivity.this).load(workout.getWorkoutImg()).centerCrop().into(imageView);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+
+        });
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -57,7 +76,6 @@ public class ScheduleViewWorkoutActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                     WorkoutPlaylist workout = dataSnapshot.getValue(WorkoutPlaylist.class);
-
                     workouts.add(workout);
 
 

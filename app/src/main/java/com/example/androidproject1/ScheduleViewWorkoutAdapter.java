@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.androidproject1.models.Workout;
 
 import java.util.ArrayList;
@@ -40,6 +42,7 @@ public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleVie
         Workout workout = list.get(position);
         holder.workoutName.setText(workout.getWorkoutName());
         holder.workoutDesc.setText(workout.getWorkoutDesc());
+        Glide.with(context).load(workout.getWorkoutImg()).centerCrop().into(holder.workoutImg);
         holder.date = date;
     }
 
@@ -51,12 +54,14 @@ public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleVie
     public static class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
 
         TextView workoutName, workoutDesc;
+        ImageView workoutImg;
         String date;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             workoutName = itemView.findViewById(R.id.workoutName);
             workoutDesc = itemView.findViewById(R.id.workoutDescription);
+            workoutImg = itemView.findViewById(R.id.idWorkImg);
             itemView.setOnClickListener(this);
         }
 
