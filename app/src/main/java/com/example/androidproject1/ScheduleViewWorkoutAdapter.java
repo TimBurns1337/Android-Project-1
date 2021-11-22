@@ -14,15 +14,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.androidproject1.models.ScheduleWorkout;
 import com.example.androidproject1.models.Workout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleViewWorkoutAdapter.MyViewHolder>  {
 
     Context context;
     String date;
     ArrayList<Workout> list;
+
 
     public ScheduleViewWorkoutAdapter(Context context, ArrayList<Workout> list, String date) {
         this.context = context;
@@ -53,6 +59,7 @@ public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleVie
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
 
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference("Schedule");
         TextView workoutName, workoutDesc;
         ImageView workoutImg;
         String date;
@@ -66,13 +73,12 @@ public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleVie
         }
 
         @Override
-        public void onClick(View v) {
-            int postion = getAdapterPosition();
-            Toast.makeText(v.getContext(), "postion"+postion, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(v.getContext() , ScheduleViewWorkoutActivity.class);
-            intent.putExtra("name" , workoutName.getText());
-            intent.putExtra("date" , date);
-            v.getContext().startActivity(intent);
+        public void onClick(View view) {
+            Map workout = new HashMap();
+            workout.put("workout", workoutName.getText().toString());
+            workout.put("date", date);
+            database.push().setValue(workout);
+            ((ScheduleWorkoutListActivity)view.getContext()).finish();
         }
     }
 }

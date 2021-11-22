@@ -62,18 +62,16 @@ public class ScheduleWorkoutFragment extends Fragment {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                workouts.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    String id = dataSnapshot.getKey();
                     String workout = dataSnapshot.child("workout").getValue().toString();
                     String date = dataSnapshot.child("date").getValue().toString();
-                    if(date.equals( selectedDate[0])) {
-                        ScheduleWorkout sw = new ScheduleWorkout(workout, date);
-                        workouts.add(sw);
-                    }
+
+                    ScheduleWorkout sw = new ScheduleWorkout(workout, date, id);
+                    workouts.add(sw);
                 }
-
                 myAdapter.notifyDataSetChanged();
-
             }
 
             @Override
@@ -82,7 +80,7 @@ public class ScheduleWorkoutFragment extends Fragment {
             }
         });
 
-
+        calendar.setMinDate(System.currentTimeMillis() - 1000);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {

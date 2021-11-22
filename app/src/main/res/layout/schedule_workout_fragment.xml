@@ -18,23 +18,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sched_workout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:onClick="movetoSched"
         android:text="Add Workout"
-        android:backgroundTint="@color/colorAccent"
+        android:background="@drawable/shape"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:insetRight="0dp"
         android:insetLeft="0dp"
-        android:radius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calendarview" />
+        app:layout_constraintTop_toBottomOf="@id/calendarview"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/scheduleWorkout"

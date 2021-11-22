@@ -68,6 +68,7 @@
         <entry key="..\:/new/app/src/main/res/drawable-nodpi/_bg__register_ek2_shape.xml" value="0.5703125" />
         <entry key="..\:/new/app/src/main/res/drawable-nodpi/_bg__welcome_ek2_shape.xml" value="0.5703125" />
         <entry key="..\:/new/app/src/main/res/drawable-nodpi/clear.xml" value="0.5703125" />
+        <entry key="..\:/new/app/src/main/res/drawable-nodpi/rec_cal_shape.xml" value="0.5574358974358974" />
         <entry key="..\:/new/app/src/main/res/drawable-nodpi/rectangle_23_shape.xml" value="0.22239583333333332" />
         <entry key="..\:/new/app/src/main/res/drawable-nodpi/rectangle_6_shape.xml" value="0.5703125" />
         <entry key="..\:/new/app/src/main/res/drawable/calendar_colors.xml" value="0.5703125" />
@@ -76,12 +77,12 @@
         <entry key="..\:/new/app/src/main/res/layout/activity_schedule_workout_list.xml" value="0.25" />
         <entry key="..\:/new/app/src/main/res/layout/activity_update_profile.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/activity_view_workout.xml" value="0.5541666666666667" />
-        <entry key="..\:/new/app/src/main/res/layout/activity_workout_list.xml" value="0.5541666666666667" />
+        <entry key="..\:/new/app/src/main/res/layout/activity_workout_list.xml" value="0.5" />
         <entry key="..\:/new/app/src/main/res/layout/fragment_home.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/item.xml" value="0.55" />
         <entry key="..\:/new/app/src/main/res/layout/plan_workout_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/schedule_item.xml" value="0.5" />
-        <entry key="..\:/new/app/src/main/res/layout/schedule_workout_fragment.xml" value="0.5" />
+        <entry key="..\:/new/app/src/main/res/layout/schedule_workout_fragment.xml" value="0.2851851851851852" />
       </map>
     </option>
   </component>
