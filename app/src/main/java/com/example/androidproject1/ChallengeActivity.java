@@ -1,5 +1,7 @@
 package com.example.androidproject1;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -73,8 +75,6 @@ public class ChallengeActivity extends AppCompatActivity {
             sentChallenges.add(ds.getKey());
         }
 
-        ArrayList<String> friendList = new ArrayList<String>();
-
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -90,8 +90,17 @@ public class ChallengeActivity extends AppCompatActivity {
             User friend = ds.getValue(User.class);
             AppCompatButton acp = new AppCompatButton(this);
 
-            acp.setText(friend.getUsername());
+            // set image design on button
+            Drawable dp = getResources().getDrawable(R.drawable.mask_group_ek1);
+            dp.setBounds(0, 0, 80, 80);
+
+            acp.setCompoundDrawables(dp, null, null, null);
             acp.setBackgroundResource(R.drawable.rectangle_25_ek1_shape);
+            acp.setText(friend.getUsername());
+            acp.setTextColor(Color.WHITE);
+            acp.setTextSize(14);
+            acp.setPadding(100, 0, 500, 0);
+
             acp.setLayoutParams(params);
             acp.setOnClickListener(new View.OnClickListener() {
                 @Override

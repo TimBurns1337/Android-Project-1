@@ -1,10 +1,10 @@
 package com.example.androidproject1;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -14,15 +14,10 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.example.androidproject1.dao.ChallengeDao;
 import com.example.androidproject1.dao.UserDao;
 import com.example.androidproject1.models.Challenge;
-import com.example.androidproject1.models.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 
-import java.text.BreakIterator;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 public class ChallengeRequestActivity extends AppCompatActivity {
 
@@ -74,8 +69,7 @@ public class ChallengeRequestActivity extends AppCompatActivity {
 
         Challenge c = requestsSnapshot.getValue(Challenge.class);
 
-        // TODO
-        if (c.getReceived() == null) {
+        if (c == null || c.getReceived() == null) {
             Toast.makeText(getApplicationContext(), "No one sent you any challenges!", Toast.LENGTH_LONG).show();
             return;
         }
@@ -89,18 +83,28 @@ public class ChallengeRequestActivity extends AppCompatActivity {
 
             LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params1.weight = 0.2f;
+            params1.weight = 0.1f;
             params1.setMargins(5, 5, 5, 5);
             AppCompatButton button1 = new AppCompatButton(this);
+
+            Drawable dp = getResources().getDrawable(R.drawable.mask_group_ek1);
+            dp.setBounds(0, 0, 80, 80);
+
+            button1.setCompoundDrawables(dp, null, null, null);
             button1.setTag(content.get("username"));
             button1.setText(content.get("username"));
+            button1.setTextColor(Color.WHITE);
+            button1.setTextSize(14);
             button1.setBackgroundResource(R.drawable.rectangle_24_shape);
             button1.setLayoutParams(params1);
+            button1.setPadding(100, 0, 500, 0);
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(getApplicationContext(), "Challenge accepted!", Toast.LENGTH_LONG).show();
                     // TODO play the video and handle completed workout
+
+                    startChallenge();
                     handleButtonClick((AppCompatButton) view);
                     ll.removeView(llInner);
                 }
@@ -109,12 +113,12 @@ public class ChallengeRequestActivity extends AppCompatActivity {
 
             LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params2.weight = 0.8f;
-            //params2.setMargins(5, 5, 5, 5);
+            params2.weight = 0.9f;
             AppCompatButton button2 = new AppCompatButton(this);
             button2.setTag(content.get("username"));
-            button2.setText("Clear");
-            button2.setBackgroundResource(R.drawable.clear);
+            button2.setText("X");
+            button2.setTextColor(Color.RED);
+            button2.setLetterSpacing(1);
             button2.setLayoutParams(params2);
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -131,6 +135,13 @@ public class ChallengeRequestActivity extends AppCompatActivity {
 
 
         }
+    }
+
+    public void startChallenge() {
+        Intent intent = new Intent(this, ChallengeVideoPlayerActivity.class );
+
+        startActivity(intent);
+
     }
 
     public void handleButtonClick(AppCompatButton btn) {
