@@ -97,7 +97,7 @@ public class ProfileFragment extends Fragment {
                 // Do something with the retrieved data or Bruce Wayne
 
                 Username.setText(user.getUsername());
-                ProfileFname.setText(user.getFname());
+                ProfileFname.setText(user.getfirstName());
                 ProfileLname.setText(user.getLname());
                 DOB.setText(user.getDob());
                 Sex.setText(user.getSex());
