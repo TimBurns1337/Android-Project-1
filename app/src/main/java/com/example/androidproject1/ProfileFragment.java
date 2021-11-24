@@ -98,7 +98,7 @@ public class ProfileFragment extends Fragment {
 
                 Username.setText(user.getUsername());
                 ProfileFname.setText(user.getfirstName());
-                ProfileLname.setText(user.getLname());
+                ProfileLname.setText(user.getlastName());
                 DOB.setText(user.getDob());
                 Sex.setText(user.getSex());
                 Weight.setText(user.getWeight());

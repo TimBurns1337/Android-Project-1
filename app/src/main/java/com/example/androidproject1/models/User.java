@@ -10,6 +10,7 @@ public class User implements Serializable {
     private String email;
     private String fname;
     private String firstName;
+    private String lastName;
     private String lname;
     private String dob;
     private String sex;
@@ -75,6 +76,14 @@ public class User implements Serializable {
 
     public void setfirstName(String fname) {
         this.firstName = fname;
+    }
+
+    public String getlastName() {
+        return lastName;
+    }
+
+    public void setlastName(String lname) {
+        this.lastName = lname;
     }
 
     public String getLname() {
