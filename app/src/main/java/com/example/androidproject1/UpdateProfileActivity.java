@@ -115,24 +115,34 @@ public class UpdateProfileActivity extends AppCompatActivity {
 //                ft.replace(R.id.profile_Frag, new ProfileFragment()).commit();
                 // TODO:  do all updating before reaching finish
 
+
                 // Use user or userdoa??? - new?
                 String firstName = fname.getText().toString();
                 String lastName = lname.getText().toString();
+                String DOB  = dob.getText().toString();
+                String Sex = sex.getText().toString();
+                String Weight = weight.getText().toString();
+                String Height = height.getText().toString();
 
-                updatedata(firstName, lastName);
+                updatedata(firstName, lastName, DOB, Sex, Weight, Height);
                 finish();
             }
         });
     }
 
 
-    private void updatedata(String firstName, String lastName) {
+    private void updatedata(String firstName, String lastName, String dob,
+                            String sex, String weight, String height) {
         firebaseAuth = FirebaseAuth.getInstance();
         String uid = firebaseAuth.getCurrentUser().getUid();
 
         HashMap User = new HashMap();
         User.put("firstName", firstName);
         User.put("lastName", lastName);
+        User.put("dob", dob);
+        User.put("sex", sex);
+        User.put("weight", weight);
+        User.put("height", height);
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("User");
         rootRef.child(uid).updateChildren(User).addOnCompleteListener(new OnCompleteListener() {
             @Override

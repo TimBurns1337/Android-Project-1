@@ -44,7 +44,6 @@
         android:textColor="@color/rectangle_33_color"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/image"
-
         app:layout_constraintEnd_toStartOf="@+id/gl_44pc"
         app:layout_constraintTop_toBottomOf="@+id/group_2_ek1" />
 
@@ -58,10 +57,9 @@
         android:textColor="@color/rectangle_33_color"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/gl_34pc"
-
         app:layout_constraintStart_toStartOf="@+id/gl_56pc"
         app:layout_constraintTop_toBottomOf="@+id/group_2_ek1"
-        app:layout_constraintVertical_bias="1.0" />
+         />
 
     <ImageView
         android:id="@+id/bg_ek3"
