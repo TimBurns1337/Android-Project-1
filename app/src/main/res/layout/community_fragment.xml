@@ -3,39 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/_bg__workout_search_ek2_color">
 
-    <!-- This is image textview -->
+
 
     <!-- This is welcome textview -->
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:background="#090030"
         android:scaleType="centerCrop"
         android:src="@drawable/background_image"
-        app:layout_constraintBottom_toTopOf="@id/gl_34pc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/community"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center"
-        android:gravity="center"
-        android:text="@string/community_ek3_string"
-        android:textColor="@color/login_ek3_color"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="@+id/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/image" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Start white rounded tiles -->
 
@@ -44,6 +28,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/compete_with_friends_string"
+        android:textSize="20sp"
+        android:textColor="#03A9F4"
+        android:lineSpacingExtra="10dp"
         android:background="@drawable/rectangle_2_ek2"
         app:layout_constraintBottom_toTopOf="@+id/gl_60pc"
         app:layout_constraintEnd_toStartOf="@+id/gl_44pc"
@@ -55,6 +42,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/compete_requests_string"
+        android:textSize="20sp"
+        android:textColor="#4CAF50"
+        android:lineSpacingExtra="10dp"
         android:background="@drawable/rectangle_2_ek2"
         app:layout_constraintBottom_toTopOf="@+id/gl_60pc"
         app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
@@ -66,6 +56,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/leaderboard_string"
+        android:textSize="20sp"
+        android:textColor="#FF9800"
+        android:lineSpacingExtra="10dp"
         android:background="@drawable/rectangle_2_ek2"
         app:layout_constraintBottom_toTopOf="@+id/gl_86pc"
         app:layout_constraintEnd_toStartOf="@+id/gl_44pc"
@@ -77,213 +70,23 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/share_your_progress_string"
+        android:textSize="20sp"
+        android:textColor="#E91E63"
+        android:lineSpacingExtra="10dp"
         android:background="@drawable/rectangle_2_ek2"
         app:layout_constraintBottom_toTopOf="@+id/gl_86pc"
         app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
         app:layout_constraintStart_toStartOf="@+id/gl_56pc"
         app:layout_constraintTop_toBottomOf="@+id/gl_60pc" />
 
-    <!--
-    <ImageView
-        android:id="@+id/rectangle_1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="4dp"
-        android:contentDescription="rectangle_1"
-        android:src="@drawable/rectangle_2_ek2"
-        app:layout_constraintBottom_toTopOf="@+id/gl_60pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_44pc"
-        app:layout_constraintStart_toStartOf="@+id/gl_10pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_34pc" />
-
-
-    <ImageView
-        android:id="@+id/rectangle_2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="4dp"
-        android:contentDescription="rectangle_2"
-        android:src="@drawable/rectangle_2_ek2"
-        app:layout_constraintBottom_toTopOf="@+id/gl_60pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/gl_56pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_34pc" />
-
-    <ImageView
-        android:id="@+id/rectangle_3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="4dp"
-        android:contentDescription="rectangle_3"
-        android:src="@drawable/rectangle_2_ek2"
-        app:layout_constraintBottom_toTopOf="@+id/gl_86pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_44pc"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/gl_10pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_60pc" />
-
-    <ImageView
-        android:id="@+id/rectangle_4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="4dp"
-        android:contentDescription="rectangle_4"
-        android:src="@drawable/rectangle_2_ek2"
-        app:layout_constraintBottom_toTopOf="@+id/gl_86pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/gl_56pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_60pc" />
-    -->
-
     <!-- End white rounded tiles -->
-
-    <!-- Start text on white rounded tiles  -->
-
-    <!--
-    <TextView
-        android:id="@+id/compete_with_friends"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="@string/compete_with_friends_string"
-        android:textColor="@color/compete_with_friends_color"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@id/rectangle_1"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_1"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_1"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_1"
-        />
-
-    <TextView
-        android:id="@+id/month"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="@string/leaderboard_string"
-        android:textColor="@color/leaderboard_color"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_2"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_2"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
-
-    <TextView
-        android:id="@+id/workout_with_friends"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="@string/workout_with_friends_string"
-        android:textColor="@color/workout_with_friends_color"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_3"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_3"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_3" />
-
-    <TextView
-        android:id="@+id/share_your_progress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="@string/share_your_progress_string"
-        android:textColor="@color/share_your_progress_color"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_4"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_4"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_4"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_4" />
-    -->
-
-    <!-- End text on white rounded tiles  -->
-
-    <!-- Start line vector on white rounded tiles -->
-
-    <!--
-    <ImageView
-        android:id="@+id/vector_red"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="rectangle_1"
-        android:layout_marginTop="-60dp"
-        android:padding="50dp"
-        android:src="@drawable/vector_red"
-        app:layout_constraintBottom_toBottomOf="@id/rectangle_1"
-        app:layout_constraintEnd_toEndOf="@id/rectangle_1"
-        app:layout_constraintStart_toStartOf="@id/rectangle_1"
-
-        app:layout_constraintTop_toBottomOf="@+id/compete_with_friends"
-        />
-
-
-    <ImageView
-        android:id="@+id/vector_orange"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="70dp"
-        android:contentDescription="rectangle_1"
-        android:src="@drawable/vector_orange"
-        android:padding="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/gl_60pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/gl_56pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_34pc" />
-
-    <ImageView
-        android:id="@+id/vector_green"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="70dp"
-        android:contentDescription="rectangle_1"
-        android:src="@drawable/vector_green"
-        android:padding="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/gl_86pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_44pc"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/gl_10pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_60pc" />
-
-    <ImageView
-        android:id="@+id/vector_blue"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="70dp"
-        android:contentDescription="rectangle_1"
-        android:src="@drawable/vector_blue"
-        android:padding="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/gl_86pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/gl_56pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_60pc"/>
-
-    -->
-    <!-- End line vector on white rounded tiles -->
-
-    <!-- Start of navigation-->
-
-
-    <!-- End of navigation-->
-
-    <!-- Start of guidelines  -->
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_34pc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.02" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_10pc"
@@ -318,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.56" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_86pc"

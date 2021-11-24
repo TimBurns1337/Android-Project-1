@@ -14,6 +14,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import java.util.HashMap;
+
 /**
  * source
  * https://www.youtube.com/watch?v=741QCymuky4&ab_channel=CamboTutorial
@@ -22,8 +24,8 @@ import com.google.firebase.database.Query;
 
 public class UserDao {
 
-    private DatabaseReference df;
-    private FirebaseAuth fa;
+    public DatabaseReference df;
+    public FirebaseAuth fa;
 
     public UserDao() {
 
@@ -54,5 +56,7 @@ public class UserDao {
 
         return df.get();
     }
+
+
 
 }
