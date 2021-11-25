@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 
 import com.example.androidproject1.models.ScheduleWorkout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,16 +60,20 @@ public class ScheduleWorkoutFragment extends Fragment {
         myAdapter = new ScheduleWorkoutListAdapter(getActivity(), workouts, selectedDate[0]);
         recyclerView.setAdapter(myAdapter);
 
+
+
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 workouts.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     String id = dataSnapshot.getKey();
+                    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                    String uid = firebaseAuth.getCurrentUser().getUid();
                     String workout = dataSnapshot.child("workout").getValue().toString();
                     String date = dataSnapshot.child("date").getValue().toString();
 
-                    ScheduleWorkout sw = new ScheduleWorkout(workout, date, id);
+                    ScheduleWorkout sw = new ScheduleWorkout(workout, date, uid);
                     workouts.add(sw);
                 }
                 myAdapter.notifyDataSetChanged();
