@@ -3,6 +3,7 @@ package com.example.androidproject1.models;
 public class WorkoutPlaylist {
     private String name;
     private int time;
+    private String img;
 
     public String getName() {
         return name;
@@ -18,5 +19,13 @@ public class WorkoutPlaylist {
 
     public void setTime(int time) {
         this.time = time;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }
