@@ -52,9 +52,12 @@ public class ScheduleWorkoutFragment extends Fragment {
         final String[] selectedDate = {sdf.format(new Date(calendar.getDate()))};
 
         recyclerView = (RecyclerView)view.findViewById(R.id.scheduleWorkout);
-        database = FirebaseDatabase.getInstance().getReference("Schedule");
+        database = FirebaseDatabase.getInstance().getReference("Schedule1");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        String uid = firebaseAuth.getCurrentUser().getUid();
 
         workouts = new ArrayList<>();
         myAdapter = new ScheduleWorkoutListAdapter(getActivity(), workouts, selectedDate[0]);
@@ -66,15 +69,16 @@ public class ScheduleWorkoutFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 workouts.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    String id = dataSnapshot.getKey();
-                    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                    String uid = firebaseAuth.getCurrentUser().getUid();
-                    String workout = dataSnapshot.child("workout").getValue().toString();
-                    String date = dataSnapshot.child("date").getValue().toString();
-
-                    ScheduleWorkout sw = new ScheduleWorkout(workout, date, uid);
-                    workouts.add(sw);
+                for (DataSnapshot users : snapshot.getChildren()){
+                    if (users.getKey().equals(uid)) {
+                        for (DataSnapshot dsWorkout : users.getChildren()) {
+                            String id = dsWorkout.getKey();
+                            String workout = dsWorkout.child("workout").getValue().toString();
+                            String date = dsWorkout.child("date").getValue().toString();
+                            ScheduleWorkout sw = new ScheduleWorkout(workout, date, id);
+                            workouts.add(sw);
+                        }
+                    }
                 }
                 myAdapter.notifyDataSetChanged();
             }

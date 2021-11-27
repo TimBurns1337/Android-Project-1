@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidproject1.models.ScheduleWorkout;
 import com.example.androidproject1.models.Workout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -48,18 +49,21 @@ public class ScheduleWorkoutListAdapter  extends RecyclerView.Adapter<ScheduleWo
         ScheduleWorkout workout = list.get(position);
         holder.workoutName.setText(workout.getWorkoutName());
         holder.workoutDate.setText(workout.getWorkoutDate());
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("Schedule");
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference("Schedule1");
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        String uid = firebaseAuth.getCurrentUser().getUid();
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(view.getContext())
-                        .setTitle("Title")
+                        .setTitle("Delete Workout")
                         .setMessage("Do you want to delete this workout?")
                         .setIcon(android.R.drawable.ic_dialog_info)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                DatabaseReference s = database.child(String.valueOf(workout.getID()));
+                                DatabaseReference s = database.child(uid).child(String.valueOf(workout.getID()));
                                 s.removeValue();
                             }})
                         .setNegativeButton(android.R.string.no, null).show();

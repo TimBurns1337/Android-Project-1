@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.androidproject1.models.ScheduleWorkout;
 import com.example.androidproject1.models.Workout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -59,7 +60,9 @@ public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleVie
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
 
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("Schedule");
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference("Schedule1");
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        String uid = firebaseAuth.getCurrentUser().getUid();
         TextView workoutName, workoutDesc;
         ImageView workoutImg;
         String date;
@@ -77,7 +80,7 @@ public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleVie
             Map workout = new HashMap();
             workout.put("workout", workoutName.getText().toString());
             workout.put("date", date);
-            database.push().setValue(workout);
+            database.child(uid).push().setValue(workout);
             ((ScheduleWorkoutListActivity)view.getContext()).finish();
         }
     }
