@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +33,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
     EditText fname, lname, dob, sex, weight, height;
     String FName, LName, DOB, Sex, Weight, Height;
+    private Uri mImageUri = null;
 
     private User user;
     private FirebaseAuth firebaseAuth;
@@ -167,5 +170,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void addPhoto(View view) {
+        Intent photoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); //To save to file: photoIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.withAppendedPath(locationForPhotos, targetFilename));
+        if (photoIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(photoIntent);
+            photoIntent.setType("image/*");
+        }
     }
 }

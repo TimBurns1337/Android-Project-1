@@ -25,10 +25,10 @@
     <ImageView
         android:id="@+id/group_2_ek1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:contentDescription="group_2_ek1"
-        android:src="@drawable/group_2_ek1"
-        app:layout_constraintBottom_toBottomOf="@+id/image"
+        android:src="@drawable/profile_icon"
+        app:layout_constraintBottom_toTopOf="@+id/gl_3pc"
         app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/gl_10pc"
@@ -241,6 +241,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.91" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_3pc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.28" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_56pc"

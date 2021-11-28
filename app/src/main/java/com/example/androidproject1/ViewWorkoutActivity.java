@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -47,6 +50,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance().getReference("Workout");
 
         DatabaseReference work = database.child(name);
+        DatabaseReference database2 = FirebaseDatabase.getInstance().getReference("WorkoutExercises");
 
         work.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -77,10 +81,7 @@ public class ViewWorkoutActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                     WorkoutPlaylist workout = dataSnapshot.getValue(WorkoutPlaylist.class);
-
                     workouts.add(workout);
-
-
                 }
                 myAdapter.notifyDataSetChanged();
 
@@ -91,5 +92,28 @@ public class ViewWorkoutActivity extends AppCompatActivity {
 
             }
         });
+
+        database2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                    if (!workouts.isEmpty()) {
+                        for (WorkoutPlaylist workout:workouts
+                             ) {
+                            if (snap.child("name").getValue(String.class).equals(workout.getName())) {
+                                String url = snap.child("video").getValue(String.class);
+                                workout.setImg(url);
+                            }
+                        }
+                    }
+                }
+                myAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+
+        });
+
     }
 }
