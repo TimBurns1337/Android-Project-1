@@ -25,6 +25,7 @@
         <entry key="..\:/Android-Project-1/app/src/main/res/layout/schedule_workout_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/Android-Project-1/app/src/main/res/layout/submit_workout_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_schedule_workout_list.xml" value="0.1515625" />
+        <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_update_profile.xml" value="0.22" />
         <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_workout_list.xml" value="0.1515625" />
         <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/profile_fragment.xml" value="0.3333333333333333" />
@@ -84,10 +85,6 @@
         <entry key="..\:/new/app/src/main/res/layout/plan_workout_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/schedule_item.xml" value="0.5" />
         <entry key="..\:/new/app/src/main/res/layout/schedule_workout_fragment.xml" value="0.2851851851851852" />
-        <entry key="app/src/main/res/layout/activity_timer.xml" value="0.20715687910007713" />
-        <entry key="app/src/main/res/layout/item.xml" value="0.15364583333333334" />
-        <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.2390625" />
-        <entry key="app/src/main/res/layout/video_item.xml" value="0.27204795769510554" />
       </map>
     </option>
   </component>
