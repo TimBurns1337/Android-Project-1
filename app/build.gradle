@@ -49,4 +49,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    // below is in testing - trying to update picture to database
+    implementation 'com.google.firebase:firebase-storage:19.1.0'
+
 }

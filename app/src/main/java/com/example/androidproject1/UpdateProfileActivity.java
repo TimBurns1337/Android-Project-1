@@ -179,4 +179,15 @@ public class UpdateProfileActivity extends AppCompatActivity {
             photoIntent.setType("image/*");
         }
     }
+
+    public void selectImage(View view) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(
+                Intent.createChooser(
+                        intent,
+                        "Select Image from here..."),
+                PICK_IMAGE_REQUEST);
+    }
 }
