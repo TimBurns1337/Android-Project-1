@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.androidproject1.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -24,19 +27,30 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class UpdateProfileActivity extends AppCompatActivity {
+
 
     Button btn;
 
     EditText fname, lname, dob, sex, weight, height;
     String FName, LName, DOB, Sex, Weight, Height;
     private Uri mImageUri = null;
+    private Uri filePath;
+    private static final int PICK_IMAGE_REQUEST = 22;
+    private static final int PHOTO_REQUEST = 1200 ;
 
     private User user;
     private FirebaseAuth firebaseAuth;
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,6 +160,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         User.put("sex", sex);
         User.put("weight", weight);
         User.put("height", height);
+        //User.put("profileImage", filePath);
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("User");
         rootRef.child(uid).updateChildren(User).addOnCompleteListener(new OnCompleteListener() {
             @Override
@@ -158,7 +173,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 //                    binding.lastname.setText("");
 //                    binding.age.setText("");
 //                    Toast.makeText(UpdateData.this,"Successfully Updated",Toast.LENGTH_SHORT).show();
-
+                    //uploadImage();
                     finish();
 
                 } else {
@@ -175,7 +190,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
     public void addPhoto(View view) {
         Intent photoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); //To save to file: photoIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.withAppendedPath(locationForPhotos, targetFilename));
         if (photoIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(photoIntent);
+            startActivityForResult(photoIntent,PHOTO_REQUEST);
+            //startActivity(photoIntent);
             photoIntent.setType("image/*");
         }
     }
@@ -189,5 +205,101 @@ public class UpdateProfileActivity extends AppCompatActivity {
                         intent,
                         "Select Image from here..."),
                 PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode,
+                                    int resultCode,
+                                    Intent data)
+    {
+
+        super.onActivityResult(requestCode,
+                resultCode,
+                data);
+
+        // checking request code and result code
+        // if request code is PICK_IMAGE_REQUEST and
+        // resultCode is RESULT_OK
+        // then set image in the image view
+        if (requestCode == PICK_IMAGE_REQUEST
+                && resultCode == RESULT_OK
+                && data != null
+                && data.getData() != null) {
+
+            // Get the Uri of data
+            filePath = data.getData();
+        }
+    }
+
+    // method for uploading picture - work in progress - crashes app
+    private void uploadImage() {
+        if (filePath != null) {
+
+            // Code for showing progressDialog while uploading
+            ProgressDialog progressDialog
+                    = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            // Defining the child of storageReference
+            StorageReference ref
+                    = storageReference
+                    .child(
+                            "images/"
+                                    + UUID.randomUUID().toString());
+
+            // adding listeners on upload
+            // or failure of image
+            ref.putFile(filePath)
+                    .addOnSuccessListener(
+                            new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+                                @Override
+                                public void onSuccess(
+                                        UploadTask.TaskSnapshot taskSnapshot) {
+
+                                    // Image uploaded successfully
+                                    // Dismiss dialog
+                                    progressDialog.dismiss();
+                                    Toast
+                                            .makeText(UpdateProfileActivity.this,
+                                                    "Image Uploaded!!",
+                                                    Toast.LENGTH_SHORT)
+                                            .show();
+                                }
+                            })
+
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                            // Error, Image not uploaded
+                            progressDialog.dismiss();
+                            Toast
+                                    .makeText(UpdateProfileActivity.this,
+                                            "Failed " + e.getMessage(),
+                                            Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+                    })
+                    .addOnProgressListener(
+                            new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+                                // Progress Listener for loading
+                                // percentage on the dialog box
+                                @Override
+                                public void onProgress(
+                                        UploadTask.TaskSnapshot taskSnapshot) {
+                                    double progress
+                                            = (100.0
+                                            * taskSnapshot.getBytesTransferred()
+                                            / taskSnapshot.getTotalByteCount());
+                                    progressDialog.setMessage(
+                                            "Uploaded "
+                                                    + (int) progress + "%");
+                                }
+                            });
+        }
+
     }
 }
