@@ -24,6 +24,8 @@
         <entry key="..\:/Android-Project-1/app/src/main/res/layout/profile_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/Android-Project-1/app/src/main/res/layout/schedule_workout_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/Android-Project-1/app/src/main/res/layout/submit_workout_fragment.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_schedule_workout_list.xml" value="0.1515625" />
         <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_update_profile.xml" value="0.22" />
         <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_workout_list.xml" value="0.1515625" />
@@ -75,19 +77,13 @@
         <entry key="..\:/new/app/src/main/res/drawable-nodpi/rectangle_6_shape.xml" value="0.5703125" />
         <entry key="..\:/new/app/src/main/res/drawable/calendar_colors.xml" value="0.5703125" />
         <entry key="..\:/new/app/src/main/res/drawable/calendat_button.xml" value="0.5703125" />
-        <entry key="..\:/new/app/src/main/res/drawable/shape.xml" value="0.4036458333333333" />
         <entry key="..\:/new/app/src/main/res/layout/activity_challenge.xml" value="0.5541666666666667" />
-        <entry key="..\:/new/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/activity_schedule_workout_list.xml" value="0.25" />
         <entry key="..\:/new/app/src/main/res/layout/activity_update_profile.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/activity_view_workout.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/activity_workout_list.xml" value="0.5" />
-        <entry key="..\:/new/app/src/main/res/layout/activity_workout_search.xml" value="0.5541666666666667" />
-        <entry key="..\:/new/app/src/main/res/layout/app_bar_workout_search.xml" value="0.5541666666666667" />
-        <entry key="..\:/new/app/src/main/res/layout/content_workout_search.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/fragment_home.xml" value="0.5541666666666667" />
-        <entry key="..\:/new/app/src/main/res/layout/item.xml" value="0.15263157894736842" />
-        <entry key="..\:/new/app/src/main/res/layout/plan_item.xml" value="0.32094594594594594" />
+        <entry key="..\:/new/app/src/main/res/layout/item.xml" value="0.55" />
         <entry key="..\:/new/app/src/main/res/layout/plan_workout_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/schedule_item.xml" value="0.5" />
         <entry key="..\:/new/app/src/main/res/layout/schedule_workout_fragment.xml" value="0.2851851851851852" />

@@ -45,6 +45,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private Uri mImageUri = null;
     private Uri filePath;
     private static final int PICK_IMAGE_REQUEST = 22;
+    private static final int REQUEST_IMAGE_CAPTURE = 111;
     private static final int PHOTO_REQUEST = 1200 ;
 
     private User user;
@@ -194,6 +195,14 @@ public class UpdateProfileActivity extends AppCompatActivity {
             //startActivity(photoIntent);
             photoIntent.setType("image/*");
         }
+    }
+
+    public void takePhoto(View view) {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
     }
 
 
