@@ -61,8 +61,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toEndOf="@+id/btn_rem"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image" />
 
     <ImageView
@@ -202,17 +201,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bg123" />
-
-    <Button
-        android:id="@+id/btn_rem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="saveDataReg"
-        android:text="Remember Me"
-        app:layout_constraintBottom_toTopOf="@+id/bg"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image"
-        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_10pc"
