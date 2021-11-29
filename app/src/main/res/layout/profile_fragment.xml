@@ -23,10 +23,10 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/group_2_ek1"
+        android:id="@+id/profileImage"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:contentDescription="group_2_ek1"
+        android:contentDescription="profileImage"
         android:src="@drawable/profile_icon"
         app:layout_constraintBottom_toTopOf="@+id/gl_3pc"
         app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
@@ -45,7 +45,7 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/image"
         app:layout_constraintEnd_toStartOf="@+id/gl_44pc"
-        app:layout_constraintTop_toBottomOf="@+id/group_2_ek1" />
+        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
 
     <TextView
@@ -58,7 +58,7 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/gl_34pc"
         app:layout_constraintStart_toStartOf="@+id/gl_56pc"
-        app:layout_constraintTop_toBottomOf="@+id/group_2_ek1"
+        app:layout_constraintTop_toBottomOf="@+id/profileImage"
          />
 
     <ImageView
@@ -166,9 +166,8 @@
 
     <TextView
         android:id="@+id/ET_pro_weight"
-        android:layout_width="51dp"
-        android:layout_height="30dp"
-        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textColor="@color/sex_text_color"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/bg_ek3_3"
@@ -285,9 +284,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:textColor="#FAF7F7"
-        app:layout_constraintBottom_toTopOf="@+id/group_2_ek1"
+        android:textColor="#FAF7F7"        
         app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
+        app:layout_constraintHorizontal_bias="0.792"
         app:layout_constraintStart_toStartOf="@+id/gl_56pc"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
