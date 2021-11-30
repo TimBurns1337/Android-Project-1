@@ -52,7 +52,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private FirebaseStorage storage;
     private Uri imageURI;
 
-    private static final int CAMERA_REQUEST = 1888;
+    private static final int CAMERA_REQUEST = 1;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
 
 
@@ -153,9 +153,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             selectedImage.setImageBitmap(photo);
             // above set image in image view, below get the image
-            imageURI = data.getData();
-            selectedImage.setImageURI(imageURI);
-            uploadPic();
+            if(data!=null && data.getData()!=null)
+            {
+                imageURI = data.getData();
+                selectedImage.setImageURI(imageURI);
+                uploadPic();
+            }
+
         }
     }
 
