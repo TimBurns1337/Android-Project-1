@@ -154,13 +154,19 @@ public class UpdateProfileActivity extends AppCompatActivity {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             selectedImage.setImageBitmap(photo);
             // above set image in image view, below get the image and save in URI
-            if(data!=null && data.getData()!=null)
-            {
-                imageURI = data.getData();
-                selectedImage.setImageURI(imageURI);
-                uploadPic();
-            }
+//            if(data!=null && data.getData()!=null)
+//            {
+//                imageURI = data.getData();
+//                selectedImage.setImageURI(imageURI);
+//                uploadPic();
+//            }
 
+        }
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK && data!=null && data.getData()!=null)
+        {
+            imageURI = data.getData();
+            selectedImage.setImageURI(imageURI);
+            uploadPic();
         }
     }
 
