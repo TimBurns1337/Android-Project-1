@@ -36,7 +36,6 @@ public class CommunityFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ChallengeActivity.class );
-
                 startActivity(intent);
             }
         });
@@ -46,7 +45,6 @@ public class CommunityFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), LeaderboardActivity.class );
-
                 startActivity(intent);
             }
         });
@@ -57,18 +55,7 @@ public class CommunityFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ChallengeRequestActivity.class );
-
                 startActivity(intent);
-                // workout requests
-            }
-        });
-
-        Button shareBtn = (Button) view.findViewById(R.id.share_your_progress_btn);
-        shareBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // TODO
-                // share to social media
             }
         });
 

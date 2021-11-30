@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/_bg__workout_search_ek2_color">
+    android:background="@color/_bg__workout_search_ek2_color"
+    android:backgroundTint="#090030">
 
     <ImageView
         android:id="@+id/image"
@@ -26,26 +27,26 @@
         android:text="@string/challenge_requests_string"
         android:textColor="@color/login_ek3_color"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/rectangle_ek1"
+        app:layout_constraintBottom_toTopOf="@+id/gl_17pc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/image" />
 
-    <ImageView android:id="@+id/rectangle_ek1"
+    <!--<ImageView android:id="@+id/rectangle_ek1"
         android:background="@drawable/rectangle_ek1_shape"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/gl_17pc"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>-->
 
     <!-- Scrollview -->
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_ek1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/gl_96pc"
         app:layout_constraintStart_toStartOf="@id/gl_4pc"
         app:layout_constraintTop_toBottomOf="@+id/gl_20pc">

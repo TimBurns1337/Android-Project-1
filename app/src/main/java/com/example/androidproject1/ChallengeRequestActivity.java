@@ -74,7 +74,7 @@ public class ChallengeRequestActivity extends AppCompatActivity {
             return;
         }
 
-
+        // build the buttons dynamically
         for (HashMap<String, String> content : c.getReceived().values()) {
 
             LinearLayout llInner = new LinearLayout(this);
@@ -87,23 +87,22 @@ public class ChallengeRequestActivity extends AppCompatActivity {
             params1.setMargins(5, 5, 5, 5);
             AppCompatButton button1 = new AppCompatButton(this);
 
-            Drawable dp = getResources().getDrawable(R.drawable.mask_group_ek1);
+            Drawable dp = getResources().getDrawable(R.drawable.vector_burn);
             dp.setBounds(0, 0, 80, 80);
 
             button1.setCompoundDrawables(dp, null, null, null);
             button1.setTag(content.get("username"));
             button1.setText(content.get("username"));
-            button1.setTextColor(Color.WHITE);
-            button1.setTextSize(14);
-            button1.setBackgroundResource(R.drawable.rectangle_24_shape);
+            button1.setTextColor(Color.DKGRAY);
+            button1.setTextSize(16);
+            button1.setBackgroundResource(R.drawable.rectangle_ek1_shape);
             button1.setLayoutParams(params1);
-            button1.setPadding(100, 0, 500, 0);
+            button1.setPadding(100, 0, 0, 0);
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // start challenge and handle the button click
                     Toast.makeText(getApplicationContext(), "Challenge accepted!", Toast.LENGTH_LONG).show();
-                    // TODO play the video and handle completed workout
-
                     startChallenge();
                     handleButtonClick((AppCompatButton) view);
                     ll.removeView(llInner);
@@ -138,8 +137,11 @@ public class ChallengeRequestActivity extends AppCompatActivity {
     }
 
     public void startChallenge() {
-        Intent intent = new Intent(this, ChallengeVideoPlayerActivity.class );
-
+        // Challenge is currently set to climbers
+        Intent intent = new Intent(this, TimerActivity.class);
+        intent.putExtra("name" , "Climbers");
+        intent.putExtra("time" , "60");
+        intent.putExtra("isChallenge" , true);
         startActivity(intent);
 
     }

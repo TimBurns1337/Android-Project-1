@@ -16,12 +16,13 @@ public class User implements Serializable {
     private String sex;
     private String weight;
     private String height;
+    private int score;
 
     public User(){}
 
     // TODO: use this constructor to update user info
     public User(String password, String email, String fname, String lname,
-                String dob, String sex, String weight, String height) {
+                String dob, String sex, String weight, String height, int score) {
         this.password = password;
         this.email = email;
         this.fname = fname;
@@ -30,6 +31,7 @@ public class User implements Serializable {
         this.sex = sex;
         this.weight = weight;
         this.height = height;
+        this.score = score;
     }
 
     public User(String username, String email, String password) {
@@ -124,5 +126,13 @@ public class User implements Serializable {
 
     public void setHeight(String height) {
         this.height = height;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

@@ -4,22 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/_bg__workout_search_ek2_color">
-
-
-
-    <!-- This is welcome textview -->
-
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#090030"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="#fff">
 
     <!-- Start white rounded tiles -->
 
@@ -28,107 +13,73 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/compete_with_friends_string"
-        android:textSize="20sp"
-        android:textColor="#03A9F4"
+        android:textSize="36sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:shadowColor="#000"
+        android:shadowDx="5.0"
+        android:shadowDy="5.0"
+        android:shadowRadius="10"
         android:lineSpacingExtra="10dp"
-        android:background="@drawable/rectangle_2_ek2"
-        app:layout_constraintBottom_toTopOf="@+id/gl_60pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_44pc"
-        app:layout_constraintStart_toStartOf="@+id/gl_10pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_34pc" />
+        android:background="@drawable/challenges_compete_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/gl_33c"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/compete_requests_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/compete_requests_string"
-        android:textSize="20sp"
-        android:textColor="#4CAF50"
+        android:textSize="36sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:shadowColor="#000"
+        android:shadowDx="5.0"
+        android:shadowDy="5.0"
+        android:shadowRadius="10"
         android:lineSpacingExtra="10dp"
-        android:background="@drawable/rectangle_2_ek2"
-        app:layout_constraintBottom_toTopOf="@+id/gl_60pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
-        app:layout_constraintStart_toStartOf="@+id/gl_56pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_34pc" />
+        android:background="@drawable/challenges_request_btn"
+        app:layout_constraintTop_toTopOf="@id/gl_33c"
+        app:layout_constraintBottom_toBottomOf="@id/gl_66c"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/leaderboard_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/leaderboard_string"
-        android:textSize="20sp"
-        android:textColor="#FF9800"
+        android:textSize="36sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:shadowColor="#000"
+        android:shadowDx="5.0"
+        android:shadowDy="5.0"
+        android:shadowRadius="10"
         android:lineSpacingExtra="10dp"
-        android:background="@drawable/rectangle_2_ek2"
-        app:layout_constraintBottom_toTopOf="@+id/gl_86pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_44pc"
-        app:layout_constraintStart_toStartOf="@+id/gl_10pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_60pc"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/share_your_progress_btn"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/share_your_progress_string"
-        android:textSize="20sp"
-        android:textColor="#E91E63"
-        android:lineSpacingExtra="10dp"
-        android:background="@drawable/rectangle_2_ek2"
-        app:layout_constraintBottom_toTopOf="@+id/gl_86pc"
-        app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
-        app:layout_constraintStart_toStartOf="@+id/gl_56pc"
-        app:layout_constraintTop_toBottomOf="@+id/gl_60pc" />
+        android:background="@drawable/challenges_leaderboard_btn"
+        app:layout_constraintTop_toTopOf="@id/gl_66c"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- End white rounded tiles -->
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_34pc"
+        android:id="@+id/gl_33c"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.02" />
+        app:layout_constraintGuide_percent="0.33" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_10pc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.04" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_90pc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.96" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_56pc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.53" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_44pc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.48" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_60pc"
+        android:id="@+id/gl_66c"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_86pc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_percent="0.66" />
 
     <!-- End of guidelines  -->
 

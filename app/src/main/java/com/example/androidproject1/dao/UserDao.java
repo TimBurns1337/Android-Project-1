@@ -57,6 +57,16 @@ public class UserDao {
         return df.get();
     }
 
+    public Task<DataSnapshot> getTopThreeUsers(){
+
+        return df.orderByChild("score").limitToLast(3).get();
+    }
+
+    public Task<DataSnapshot> getAllUsersOrderedByScore(){
+
+        return df.orderByChild("score").get();
+    }
+
 
 
 }

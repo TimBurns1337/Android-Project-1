@@ -91,15 +91,15 @@ public class ChallengeActivity extends AppCompatActivity {
             AppCompatButton acp = new AppCompatButton(this);
 
             // set image design on button
-            Drawable dp = getResources().getDrawable(R.drawable.mask_group_ek1);
+            Drawable dp = getResources().getDrawable(R.drawable.vector_weights);
             dp.setBounds(0, 0, 80, 80);
 
             acp.setCompoundDrawables(dp, null, null, null);
-            acp.setBackgroundResource(R.drawable.rectangle_25_ek1_shape);
+            acp.setBackgroundResource(R.drawable.rectangle_ek1_shape);
             acp.setText(friend.getUsername());
-            acp.setTextColor(Color.WHITE);
-            acp.setTextSize(14);
-            acp.setPadding(100, 0, 500, 0);
+            acp.setTextColor(Color.DKGRAY);
+            acp.setTextSize(16);
+            acp.setPadding(100, 0, 0, 0);
 
             acp.setLayoutParams(params);
             acp.setOnClickListener(new View.OnClickListener() {

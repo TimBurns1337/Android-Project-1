@@ -1,5 +1,7 @@
 package com.example.androidproject1;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,11 +16,15 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
+import com.example.androidproject1.dao.ChallengeDao;
+import com.example.androidproject1.dao.UserDao;
 import com.example.androidproject1.models.Workout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 public class TimerActivity extends AppCompatActivity {
@@ -35,6 +41,8 @@ public class TimerActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
         String time = intent.getStringExtra("time");
+        Boolean isChallenge = intent.getBooleanExtra("isChallenge", false);
+
         timerBtn = findViewById(R.id.timerBtn);
         timer = findViewById(R.id.tvTimer);
         videoView = findViewById(R.id.mainVideo);
@@ -53,6 +61,40 @@ public class TimerActivity extends AppCompatActivity {
 
                     public void onFinish() {
                         timer.setText("done!");
+
+                        // if this view was from Challenge, update the score if needed
+                        if (isChallenge) {
+                            // get the information of current user
+                            UserDao ud = new UserDao();
+                            String uid = ud.getCurrentUserUid();
+
+                            ud.df.child(uid).child("score").runTransaction(new Transaction.Handler() {
+                                @NonNull
+                                @Override
+                                public Transaction.Result doTransaction(@NonNull MutableData currentData) {
+                                    if (currentData.getValue() == null) {
+                                        currentData.setValue(1);
+                                    } else {
+                                        currentData.setValue((Long) currentData.getValue() + 1);
+                                    }
+
+                                    return Transaction.success(currentData);
+                                }
+
+                                @Override
+                                public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {
+
+                                    if (error != null) {
+                                        System.out.println("Firebase counter increment failed.");
+                                    } else {
+                                        System.out.println("Firebase counter increment succeeded.");
+                                    }
+
+                                }
+                            });
+
+                        }
+
                     }
 
                 }.start();

@@ -26,7 +26,7 @@ public class ChallengeDao {
         // handle sent challenges
         HashMap sentMap = new HashMap();
 
-        sentMap.put(friendUid, friendUid); // TODO: what to put as value??
+        sentMap.put(friendUid, friendUid);
         df.child(userUid).child("sent").updateChildren(sentMap);
 
         // handle received challenges
