@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -18,16 +20,22 @@ import android.widget.Toast;
 
 import com.example.androidproject1.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 
+import java.io.File;
 import java.util.HashMap;
-
+import java.util.UUID;
 
 
 public class UpdateProfileActivity extends AppCompatActivity {
@@ -38,7 +46,11 @@ public class UpdateProfileActivity extends AppCompatActivity {
     // these vars are to upload user data to fbase
     private User user;
     private FirebaseAuth firebaseAuth;
-    private StorageReference storageReference;
+
+    //uploading image
+    private StorageReference storageRef;
+    private FirebaseStorage storage;
+    private Uri imageURI;
 
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
@@ -50,8 +62,11 @@ public class UpdateProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_profile);
 
         selectedImage = findViewById(R.id.displayImageView);
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
 
-        storageReference = FirebaseStorage.getInstance().getReference();
+
+
         firebaseAuth = FirebaseAuth.getInstance();
         String uid = firebaseAuth.getCurrentUser().getUid();
 
@@ -137,11 +152,41 @@ public class UpdateProfileActivity extends AppCompatActivity {
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             selectedImage.setImageBitmap(photo);
+            // above set image in image view, below get the image
+            imageURI = data.getData();
+            selectedImage.setImageURI(imageURI);
+            uploadPic();
         }
     }
 
-    public void uploadPic(View view) {
+    public void uploadPic() {
 
-        // get image from image view and upload to firebase storage
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setTitle("Uploading Image...");
+        pd.show();
+
+        final String randomKey = UUID.randomUUID().toString();
+        StorageReference mountainsRef = storageRef.child("images/" + randomKey);
+
+        mountainsRef.putFile(imageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                pd.dismiss();
+                Snackbar.make(findViewById(android.R.id.content),"Image Uploaded.", Snackbar.LENGTH_LONG).show();
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        pd.dismiss();
+                        Toast.makeText(getApplicationContext(), "Failed to upload", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                double progressPrecent = (100.00 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                pd.setMessage("Percentage Completed: " + (int) progressPrecent + "%");
+            }
+        });
     }
 }
