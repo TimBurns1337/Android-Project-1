@@ -144,6 +144,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
     public void addPhoto(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAMERA_REQUEST);
+        //registerForActivityResult(intent, CAMERA_REQUEST);
     }
 
     @Override
@@ -152,7 +153,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             selectedImage.setImageBitmap(photo);
-            // above set image in image view, below get the image
+            // above set image in image view, below get the image and save in URI
             if(data!=null && data.getData()!=null)
             {
                 imageURI = data.getData();
@@ -162,6 +163,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         }
     }
+
+
 
     public void uploadPic() {
 
@@ -192,5 +195,12 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 pd.setMessage("Percentage Completed: " + (int) progressPrecent + "%");
             }
         });
+    }
+
+    public void getPic(View view) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,1);
     }
 }
