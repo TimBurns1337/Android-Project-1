@@ -40,9 +40,11 @@ public class ViewWorkoutActivity extends AppCompatActivity {
         //geting data from adapter
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
+        String name2 = intent.getStringExtra("name2");
+
 
         TextView textView = findViewById(R.id.detWorkoutName);
-        textView.setText(name);
+        textView.setText(name2);
         ImageView imageView = findViewById(R.id.workImgFull);
 
 

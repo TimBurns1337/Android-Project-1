@@ -51,6 +51,8 @@ public class TimerActivity extends AppCompatActivity {
         timerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                timerBtn.setText("Progress");
+                timerBtn.setEnabled(false);
                 int seconds = Integer.parseInt(time) * 1000;
                 CountDownTimer tims = new CountDownTimer(seconds, 1000) {
 
@@ -61,7 +63,7 @@ public class TimerActivity extends AppCompatActivity {
 
                     public void onFinish() {
                         timer.setText("done!");
-
+                        timerBtn.setText("Start");
                         // if this view was from Challenge, update the score if needed
                         if (isChallenge) {
                             // get the information of current user

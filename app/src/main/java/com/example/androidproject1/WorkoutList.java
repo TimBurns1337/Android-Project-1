@@ -44,6 +44,7 @@ public class WorkoutList extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                     Workout workout = dataSnapshot.getValue(Workout.class);
+                    workout.setId(dataSnapshot.getKey());
                     workouts.add(workout);
 
 

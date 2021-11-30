@@ -40,6 +40,8 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.MyViewHo
         Workout workout = list.get(position);
         holder.workoutName.setText(workout.getWorkoutName());
         holder.workoutDesc.setText(workout.getWorkoutDesc());
+        holder.workoutID.setText(workout.getId());
+        holder.workoutID.setVisibility(View.INVISIBLE);
         Glide.with(context).load(workout.getWorkoutImg()).centerCrop().into(holder.workoutImg);
     }
 
@@ -50,7 +52,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.MyViewHo
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
 
-        TextView workoutName, workoutDesc;
+        TextView workoutName, workoutDesc, workoutID;
         ImageView workoutImg;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -59,15 +61,15 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.MyViewHo
             workoutName = itemView.findViewById(R.id.workoutName);
             workoutDesc = itemView.findViewById(R.id.workoutDescription);
             workoutImg = itemView.findViewById(R.id.idWorkImg);
+            workoutID = itemView.findViewById(R.id.workID);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            int postion = getAdapterPosition();
-            Toast.makeText(v.getContext(), "postion"+postion, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(v.getContext() , ViewWorkoutActivity.class);
-            intent.putExtra("name" , workoutName.getText());
+            intent.putExtra("name" , workoutID.getText());
+            intent.putExtra("name2" , workoutName.getText());
             v.getContext().startActivity(intent);
 
         }
