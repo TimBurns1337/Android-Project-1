@@ -2,15 +2,13 @@ package com.example.androidproject1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,22 +16,17 @@ import android.widget.Toast;
 
 import com.example.androidproject1.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
-import java.util.UUID;
+
 
 public class UpdateProfileActivity extends AppCompatActivity {
 
@@ -47,19 +40,16 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private Uri mImageUri = null;
     private static final  int GALLERY_REQUEST =1;
     private static final int CAMERA_REQUEST_CODE=1;
-
+    private DatabaseReference mDatabase;
     private ProgressDialog mProgress;
-
-//    private Uri filePath;
-//    private static final int PICK_IMAGE_REQUEST = 22;
-//    private static final int REQUEST_IMAGE_CAPTURE = 111;
-//    private static final int PHOTO_REQUEST = 1200 ;
-
-    private User user;
-    private FirebaseAuth firebaseAuth;
     FirebaseStorage storage;
     StorageReference storageReference;
-    private DatabaseReference mDatabase;
+
+    // these vars are to upload user data to fbase
+    private User user;
+    private FirebaseAuth firebaseAuth;
+
+
 
 
 
@@ -142,6 +132,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         });
     }
 
+    // below does not seem to work
     public void addPhoto(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -177,4 +168,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
             });
         }
     }
+
+    // try 2
+
 }
