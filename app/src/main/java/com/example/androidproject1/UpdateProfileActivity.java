@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 
@@ -18,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.androidproject1.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -132,6 +134,14 @@ public class UpdateProfileActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task task) {
 
                 if (task.isSuccessful()) {
+//                    String uid = firebaseAuth.getCurrentUser().getUid();
+//                    storage = FirebaseStorage.getInstance();
+//                    storageRef = storage.getReference().child("image/"  + uid);
+//                    ImageView profileIV = findViewById(R.id.profileImage);
+//                    Context context = null;
+//                    Glide.with(context)
+//                            .load(storageRef)
+//                            .into(profileIV);
                     finish();
                 } else {
                     Toast.makeText(UpdateProfileActivity.this, "Failed to Update", Toast.LENGTH_SHORT).show();

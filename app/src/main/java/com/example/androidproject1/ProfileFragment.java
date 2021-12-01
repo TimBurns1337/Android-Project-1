@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.androidproject1.dao.UserDao;
 import com.example.androidproject1.models.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -55,6 +57,8 @@ public class ProfileFragment extends Fragment {
     TextView Sex;
     TextView Weight;
     TextView Height;
+
+    Context context;
 
 
 
@@ -111,6 +115,9 @@ public class ProfileFragment extends Fragment {
                 Height.setText(user.getHeight());
 
                 ImageView profileIV = (ImageView) getView().findViewById(R.id.profileImage);
+//                Glide.with(context)
+//                        .load(storageRef)
+//                        .into(profileIV);
                 //StorageReference httpsReference = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg");
                 //gs://calisthenics-83123.appspot.com/images/jFXBHUSo9wdxdV9AB3tYeneHnvQ2
 
@@ -130,7 +137,7 @@ public class ProfileFragment extends Fragment {
                 //Picasso.get().load(url).resize(200,200).into(profileIV);
                 //Height.setText(url);
                 //Log.d("url", url);
-                //Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/calisthenics-83123.appspot.com/o/images%2FjFXBHUSo9wdxdV9AB3tYeneHnvQ2?alt=media&token=96348a73-d2e0-4787-b3de-a96cb6980d21").resize(200,200).into(profileIV);
+                Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/calisthenics-83123.appspot.com/o/images%2F4vAv33XXvHdlauDmq2mfSpTBiSn2?alt=media&token=db7b9ee5-7eb4-4c2a-9446-15142b1d3844").resize(500,500).into(profileIV);
 //                try {
 //                    final File localfile = File.createTempFile(uid,"jpg");
 //                    storageRef.getFile(localfile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
