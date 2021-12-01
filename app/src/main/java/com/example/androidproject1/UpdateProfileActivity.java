@@ -182,9 +182,11 @@ public class UpdateProfileActivity extends AppCompatActivity {
         pd.show();
 
         final String randomKey = UUID.randomUUID().toString();
-        StorageReference mountainsRef = storageRef.child("images/" + uid + "/" + randomKey);
+        //StorageReference mountainsRef = storageRef.child("images/" + uid + "/" + randomKey);
+        StorageReference profileRef = storageRef.child("images/" + uid);
 
-        mountainsRef.putFile(imageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+        profileRef.putFile(imageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 pd.dismiss();

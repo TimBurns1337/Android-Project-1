@@ -94,7 +94,8 @@ public class ProfileFragment extends Fragment {
                 user = dataSnapshot.getValue(User.class);
                 Log.d("myapp-email", user.getEmail());
                 Log.d("myapp-username", user.getUsername());
-                // Do something with the retrieved data or Bruce Wayne
+
+
 
                 Username.setText(user.getUsername());
                 ProfileFname.setText(user.getfirstName());
