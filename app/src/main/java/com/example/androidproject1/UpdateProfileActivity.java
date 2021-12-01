@@ -134,14 +134,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task task) {
 
                 if (task.isSuccessful()) {
-//                    String uid = firebaseAuth.getCurrentUser().getUid();
-//                    storage = FirebaseStorage.getInstance();
-//                    storageRef = storage.getReference().child("image/"  + uid);
-//                    ImageView profileIV = findViewById(R.id.profileImage);
-//                    Context context = null;
-//                    Glide.with(context)
-//                            .load(storageRef)
-//                            .into(profileIV);
                     finish();
                 } else {
                     Toast.makeText(UpdateProfileActivity.this, "Failed to Update", Toast.LENGTH_SHORT).show();
@@ -150,7 +142,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         });
     }
 
-    // below does not seem to work
+   // method for taking pics, not using atm
     public void addPhoto(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAMERA_REQUEST);
@@ -160,22 +152,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-        //    Bitmap photo = (Bitmap) data.getExtras().get("data");
-        //    selectedImage.setImageBitmap(photo);
-            // above set image in image view, below get the image and save in URI
-//            if(data!=null && data.getData()!=null)
-//            {
-//                imageURI = data.getData();
-//                selectedImage.setImageURI(imageURI);
-//                uploadPic();
-//            }
-
-        //}
+        // below is for taking pics and seting them in image view
+//        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
+//            Bitmap photo = (Bitmap) data.getExtras().get("data");
+//            selectedImage.setImageBitmap(photo);
+//        }
         if(requestCode == 1 && resultCode == Activity.RESULT_OK && data!=null && data.getData()!=null)
         {
-            //Bitmap photo = (Bitmap) data.getExtras().get("data");
-            //selectedImage.setImageBitmap(photo);
             imageURI = data.getData();
             selectedImage.setImageURI(imageURI);
             uploadPic();
@@ -191,11 +174,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         pd.setTitle("Uploading Image...");
         pd.show();
 
-        final String randomKey = UUID.randomUUID().toString();
-        //StorageReference mountainsRef = storageRef.child("images/" + uid + "/" + randomKey);
         StorageReference profileRef = storageRef.child("images/" + uid);
-
-
         profileRef.putFile(imageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

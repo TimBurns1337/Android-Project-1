@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -82,7 +83,7 @@ public class ProfileFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         String uid = firebaseAuth.getCurrentUser().getUid();
         storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference().child("image/"  + uid);
+        storageRef = storage.getReference().child("image/" + uid);
 
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
@@ -103,9 +104,6 @@ public class ProfileFragment extends Fragment {
                 user = dataSnapshot.getValue(User.class);
                 Log.d("myapp-email", user.getEmail());
                 Log.d("myapp-username", user.getUsername());
-
-
-
                 Username.setText(user.getUsername());
                 ProfileFname.setText(user.getfirstName());
                 ProfileLname.setText(user.getlastName());
@@ -115,48 +113,27 @@ public class ProfileFragment extends Fragment {
                 Height.setText(user.getHeight());
 
                 ImageView profileIV = (ImageView) getView().findViewById(R.id.profileImage);
-//                Glide.with(context)
-//                        .load(storageRef)
-//                        .into(profileIV);
-                //StorageReference httpsReference = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg");
-                //gs://calisthenics-83123.appspot.com/images/jFXBHUSo9wdxdV9AB3tYeneHnvQ2
 
-
-
-
-
-
-
-
-
-
-
-
-                //issues below - dont have acess it says
                 //String url = storageRef.getDownloadUrl().toString();
-                //Picasso.get().load(url).resize(200,200).into(profileIV);
-                //Height.setText(url);
+
+                String url = storageRef.getDownloadUrl().toString();
+
                 //Log.d("url", url);
-                Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/calisthenics-83123.appspot.com/o/images%2F4vAv33XXvHdlauDmq2mfSpTBiSn2?alt=media&token=db7b9ee5-7eb4-4c2a-9446-15142b1d3844").resize(500,500).into(profileIV);
-//                try {
-//                    final File localfile = File.createTempFile(uid,"jpg");
-//                    storageRef.getFile(localfile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                Picasso.get().load(url).resize(500,500).into(profileIV);
+                //Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/calisthenics-83123.appspot.com/o/images%2F4vAv33XXvHdlauDmq2mfSpTBiSn2?alt=media&token=db7b9ee5-7eb4-4c2a-9446-15142b1d3844").resize(500,500).into(profileIV);
+
+//                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                    @Override
+//                    public void onSuccess(Uri uri) {
+//                        Uri downloadUri = taskSnapshot.getMetadata().getDownloadUrl();
+//                        generatedFilePath = downloadUri.toString();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
 //
-//                            Bitmap bitmap = BitmapFactory.decodeFile(localfile.getAbsolutePath());
-//                            profileIV.setImageBitmap(bitmap);
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//
-//
-//                        }
-//                    });
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+//                    }
+//                });
             }
 
             @Override
