@@ -176,12 +176,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
     public void uploadPic() {
 
+        String uid = firebaseAuth.getCurrentUser().getUid();
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading Image...");
         pd.show();
 
         final String randomKey = UUID.randomUUID().toString();
-        StorageReference mountainsRef = storageRef.child("images/" + randomKey);
+        StorageReference mountainsRef = storageRef.child("images/" + uid + "/" + randomKey);
 
         mountainsRef.putFile(imageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
