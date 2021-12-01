@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,16 +19,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.androidproject1.dao.UserDao;
 import com.example.androidproject1.models.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
+import java.io.IOException;
 
 public class ProfileFragment extends Fragment {
 
@@ -43,9 +56,13 @@ public class ProfileFragment extends Fragment {
     TextView Weight;
     TextView Height;
 
+
+
     String Uname, FName, LName, dob, sex, weight, height;
     String UserName = "";
     private FirebaseAuth firebaseAuth;
+    private StorageReference storageRef;
+    private FirebaseStorage storage;
 
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
@@ -53,9 +70,15 @@ public class ProfileFragment extends Fragment {
 
 
 
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        String uid = firebaseAuth.getCurrentUser().getUid();
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference().child("image/"  + uid);
 
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
@@ -67,24 +90,6 @@ public class ProfileFragment extends Fragment {
         Weight = view.findViewById(R.id.ET_pro_weight);
         Height = view.findViewById(R.id.heighttext);
 
-        // TODO: add code to get data from db to populate these textviews
-        // TODO: need some way to get username to pul down data from db - below is no working
-        //userName = view.findViewById(R.id.name); // getting from reg page
-        //UserName = userName.getText().toString();
-//
-//        Bundle profile = getActivity().getIntent().getExtras();
-//        UserName =  profile.getString("username");
-//
-//        //UserName = getActivity().getIntent().getExtra("username");
-//        //UserName = user.getUsername();
-//        //userDao.getUserByUsername(UserName);
-//
-//        //testing - not working
-//        ProfileFname.setText(UserName);
-
-//        private FirebaseAuth firebaseAuth;
-        firebaseAuth = FirebaseAuth.getInstance();
-        String uid = firebaseAuth.getCurrentUser().getUid();
         Log.d("myapp-uid", uid);
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("User");
@@ -104,6 +109,47 @@ public class ProfileFragment extends Fragment {
                 Sex.setText(user.getSex());
                 Weight.setText(user.getWeight());
                 Height.setText(user.getHeight());
+
+                ImageView profileIV = (ImageView) getView().findViewById(R.id.profileImage);
+                //StorageReference httpsReference = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg");
+                //gs://calisthenics-83123.appspot.com/images/jFXBHUSo9wdxdV9AB3tYeneHnvQ2
+
+
+
+
+
+
+
+
+
+
+
+
+                //issues below - dont have acess it says
+                //String url = storageRef.getDownloadUrl().toString();
+                //Picasso.get().load(url).resize(200,200).into(profileIV);
+                //Height.setText(url);
+                //Log.d("url", url);
+                //Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/calisthenics-83123.appspot.com/o/images%2FjFXBHUSo9wdxdV9AB3tYeneHnvQ2?alt=media&token=96348a73-d2e0-4787-b3de-a96cb6980d21").resize(200,200).into(profileIV);
+//                try {
+//                    final File localfile = File.createTempFile(uid,"jpg");
+//                    storageRef.getFile(localfile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+//
+//                            Bitmap bitmap = BitmapFactory.decodeFile(localfile.getAbsolutePath());
+//                            profileIV.setImageBitmap(bitmap);
+//                        }
+//                    }).addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//
+//
+//                        }
+//                    });
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             }
 
             @Override
@@ -148,6 +194,7 @@ public class ProfileFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         // TODO: Use the ViewModel
     }
+
 
 
 
