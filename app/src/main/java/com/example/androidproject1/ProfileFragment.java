@@ -119,8 +119,8 @@ public class ProfileFragment extends Fragment {
                 String url = storageRef.getDownloadUrl().toString();
 
                 //Log.d("url", url);
-                Picasso.get().load(url).resize(500,500).into(profileIV);
-                //Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/calisthenics-83123.appspot.com/o/images%2F4vAv33XXvHdlauDmq2mfSpTBiSn2?alt=media&token=db7b9ee5-7eb4-4c2a-9446-15142b1d3844").resize(500,500).into(profileIV);
+                //Picasso.get().load(url).resize(500,500).into(profileIV);
+                Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/calisthenics-83123.appspot.com/o/images%2F4vAv33XXvHdlauDmq2mfSpTBiSn2?alt=media&token=db7b9ee5-7eb4-4c2a-9446-15142b1d3844").resize(500,500).into(profileIV);
 
 //                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
 //                    @Override
