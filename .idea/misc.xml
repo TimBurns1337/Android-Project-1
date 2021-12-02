@@ -24,9 +24,6 @@
         <entry key="..\:/Android-Project-1/app/src/main/res/layout/profile_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/Android-Project-1/app/src/main/res/layout/schedule_workout_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/Android-Project-1/app/src/main/res/layout/submit_workout_fragment.xml" value="0.5541666666666667" />
-        <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_login.xml" value="0.22" />
-        <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_main.xml" value="0.11911231884057971" />
-        <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_schedule_workout_list.xml" value="0.1515625" />
         <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_update_profile.xml" value="0.22" />
         <entry key="..\:/Users/timma/AndroidStudioProjects/Android-Project-1/app/src/main/res/layout/activity_workout_list.xml" value="0.1515625" />
@@ -64,10 +61,13 @@
         <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/activity_login.xml" value="0.1693840579710145" />
         <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/activity_register.xml" value="0.176" />
+        <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/activity_update_profile.xml" value="0.15896739130434784" />
         <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/activity_workout_search.xml" value="0.1693840579710145" />
         <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/app_bar_workout_search.xml" value="0.1693840579710145" />
         <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/notifications_fragment.xml" value="0.1693840579710145" />
         <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/plan_workout_fragment.xml" value="0.13385416666666666" />
+        <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/profile_fragment.xml" value="0.10729166666666666" />
+        <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/layout/video_item.xml" value="0.15896739130434784" />
         <entry key="..\:/humber/sem 3/Android App Development/Android-Project-1/app/src/main/res/menu/workout_search.xml" value="0.25416666666666665" />
         <entry key="..\:/new/app/src/main/res/drawable-nodpi/__divider_ek5_shape.xml" value="0.5703125" />
         <entry key="..\:/new/app/src/main/res/drawable-nodpi/_bg__register_ek2_shape.xml" value="0.5703125" />
@@ -88,8 +88,6 @@
         <entry key="..\:/new/app/src/main/res/layout/plan_workout_fragment.xml" value="0.5541666666666667" />
         <entry key="..\:/new/app/src/main/res/layout/schedule_item.xml" value="0.5" />
         <entry key="..\:/new/app/src/main/res/layout/schedule_workout_fragment.xml" value="0.2851851851851852" />
-        <entry key="app/src/main/res/layout/item.xml" value="0.2390625" />
-        <entry key="app/src/main/res/layout/plan_item.xml" value="0.11979166666666667" />
       </map>
     </option>
   </component>

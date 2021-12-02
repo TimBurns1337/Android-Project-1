@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ import com.example.androidproject1.dao.UserDao;
 import com.example.androidproject1.models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,10 +41,19 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
 public class ProfileFragment extends Fragment {
 
@@ -58,23 +69,17 @@ public class ProfileFragment extends Fragment {
     TextView Sex;
     TextView Weight;
     TextView Height;
+    ImageView profileIV;
 
     Context context;
-
-
 
     String Uname, FName, LName, dob, sex, weight, height;
     String UserName = "";
     private FirebaseAuth firebaseAuth;
-    private StorageReference storageRef;
-    private FirebaseStorage storage;
 
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
     }
-
-
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -82,8 +87,6 @@ public class ProfileFragment extends Fragment {
 
         firebaseAuth = FirebaseAuth.getInstance();
         String uid = firebaseAuth.getCurrentUser().getUid();
-        storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference().child("image/" + uid);
 
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
@@ -95,15 +98,12 @@ public class ProfileFragment extends Fragment {
         Weight = view.findViewById(R.id.ET_pro_weight);
         Height = view.findViewById(R.id.heighttext);
 
-        Log.d("myapp-uid", uid);
-
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("User");
+
         rootRef.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 user = dataSnapshot.getValue(User.class);
-                Log.d("myapp-email", user.getEmail());
-                Log.d("myapp-username", user.getUsername());
                 Username.setText(user.getUsername());
                 ProfileFname.setText(user.getfirstName());
                 ProfileLname.setText(user.getlastName());
@@ -112,28 +112,10 @@ public class ProfileFragment extends Fragment {
                 Weight.setText(user.getWeight());
                 Height.setText(user.getHeight());
 
-                ImageView profileIV = (ImageView) getView().findViewById(R.id.profileImage);
 
-                //String url = storageRef.getDownloadUrl().toString();
+                profileIV = getView().findViewById(R.id.profileImage);
 
-                String url = storageRef.getDownloadUrl().toString();
-
-                //Log.d("url", url);
-                //Picasso.get().load(url).resize(500,500).into(profileIV);
-                Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/calisthenics-83123.appspot.com/o/images%2F4vAv33XXvHdlauDmq2mfSpTBiSn2?alt=media&token=db7b9ee5-7eb4-4c2a-9446-15142b1d3844").resize(500,500).into(profileIV);
-
-//                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                    @Override
-//                    public void onSuccess(Uri uri) {
-//                        Uri downloadUri = taskSnapshot.getMetadata().getDownloadUrl();
-//                        generatedFilePath = downloadUri.toString();
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//
-//                    }
-//                });
+                Picasso.get().load(user.getProfileImage()).resize(500,500).into(profileIV);
             }
 
             @Override
@@ -165,6 +147,7 @@ public class ProfileFragment extends Fragment {
                 i.putExtra("sex",sex);
                 i.putExtra("weight",weight);
                 i.putExtra("height",height);
+                i.putExtra("profileImage", user.getProfileImage());
 
                 startActivity(i);
             }
@@ -178,13 +161,5 @@ public class ProfileFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         // TODO: Use the ViewModel
     }
-
-
-
-
-
-
-
-
 }
 

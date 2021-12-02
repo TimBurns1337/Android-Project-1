@@ -18,7 +18,11 @@ public class User implements Serializable {
     private String height;
     private int score;
 
-    public User(){}
+
+    private String profileImage;
+
+    public User() {
+    }
 
     // TODO: use this constructor to update user info
     public User(String password, String email, String fname, String lname,
@@ -134,5 +138,13 @@ public class User implements Serializable {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 }

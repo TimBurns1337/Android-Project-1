@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +34,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 
 import java.io.File;
@@ -67,8 +69,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
 
-
-
         firebaseAuth = FirebaseAuth.getInstance();
         String uid = firebaseAuth.getCurrentUser().getUid();
 
@@ -81,12 +81,12 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         Bundle profile = getIntent().getExtras();
 
-        FName =  profile.getString("fname");
-        LName =  profile.getString("lname");
-        DOB =  profile.getString("dob");
-        Sex =  profile.getString("sex");
-        Weight =  profile.getString("weight");
-        Height =  profile.getString("height");
+        FName = profile.getString("fname");
+        LName = profile.getString("lname");
+        DOB = profile.getString("dob");
+        Sex = profile.getString("sex");
+        Weight = profile.getString("weight");
+        Height = profile.getString("height");
 
         fname.setText(FName);
         lname.setText(LName);
@@ -94,8 +94,9 @@ public class UpdateProfileActivity extends AppCompatActivity {
         sex.setText(Sex);
         weight.setText(Weight);
         height.setText(Height);
+        Picasso.get().load(profile.getString("profileImage")).resize(500,500).into(selectedImage);
 
-        btn=findViewById(R.id.btnUpdate);
+        btn = findViewById(R.id.btnUpdate);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +104,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
                 String firstName = fname.getText().toString();
                 String lastName = lname.getText().toString();
-                String DOB  = dob.getText().toString();
+                String DOB = dob.getText().toString();
                 String Sex = sex.getText().toString();
                 String Weight = weight.getText().toString();
                 String Height = height.getText().toString();
@@ -142,7 +143,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         });
     }
 
-   // method for taking pics, not using atm
+    // method for taking pics, not using atm
     public void addPhoto(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAMERA_REQUEST);
@@ -157,14 +158,12 @@ public class UpdateProfileActivity extends AppCompatActivity {
 //            Bitmap photo = (Bitmap) data.getExtras().get("data");
 //            selectedImage.setImageBitmap(photo);
 //        }
-        if(requestCode == 1 && resultCode == Activity.RESULT_OK && data!=null && data.getData()!=null)
-        {
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
             imageURI = data.getData();
             selectedImage.setImageURI(imageURI);
             uploadPic();
         }
     }
-
 
 
     public void uploadPic() {
@@ -179,7 +178,29 @@ public class UpdateProfileActivity extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 pd.dismiss();
-                Snackbar.make(findViewById(android.R.id.content),"Image Uploaded.", Snackbar.LENGTH_LONG).show();
+                profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Uri downloadUrl = uri;
+                        Log.d("myapp", downloadUrl.toString());
+                        String uid = firebaseAuth.getCurrentUser().getUid();
+
+                        HashMap User = new HashMap();
+                        User.put("profileImage", downloadUrl.toString());
+                        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("User");
+                        rootRef.child(uid).updateChildren(User).addOnCompleteListener(new OnCompleteListener() {
+                            @Override
+                            public void onComplete(@NonNull Task task) {
+                                if (task.isSuccessful()) {
+                                    finish();
+                                } else {
+                                    Toast.makeText(UpdateProfileActivity.this, "Failed to Update", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                });
+                Snackbar.make(findViewById(android.R.id.content), "Image Uploaded.", Snackbar.LENGTH_LONG).show();
             }
         })
                 .addOnFailureListener(new OnFailureListener() {
@@ -201,6 +222,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,1);
+        startActivityForResult(intent, 1);
     }
 }
