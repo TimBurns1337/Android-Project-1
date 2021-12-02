@@ -61,24 +61,4 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-
-    private void registerUser() {
-
-        //creating a new user
-        firebaseAuth.createUserWithEmailAndPassword("user email here", "user password here")
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        //checking if success
-                        if (task.isSuccessful()) {
-                            //display some message here
-                        } else {
-                            //display some message here
-                        }
-
-                    }
-                });
-
-    }
 }

@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-
+        // creating user
         user = new User();
 
         username = findViewById(R.id.username);
@@ -94,41 +94,14 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    // move to login page
     public void login2Clicked(View view) {
         Intent intent = new Intent(this,LoginActivity.class );
 
         startActivity(intent);
     }
 
-    public void saveDataReg(View view) {
-
-        // TODO: testing if i can set the user userusernamin model and get it later to pull datat from db
-
-
-        Intent intent = new Intent(this,ProfileFragment.class );
-        intent.putExtra("username", (Parcelable) username);
-
-        //Get the text in EditText view
-        String text1 = username.getText().toString();
-        String text2 = email.getText().toString();
-        String text3 = password.getText().toString();
-
-        //Get shared preferences object
-        String sharedPrefFile = "com.example.androidproject1";
-        SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile,
-                MODE_PRIVATE);
-
-        //Save data to shared pref
-        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-        preferencesEditor.putString("text1",text1); // key and data - string is the key
-        preferencesEditor.putString("text2",text2);
-        preferencesEditor.putString("text3",text3);
-        preferencesEditor.apply();
-        // use apply not commit - better because commit will stop the execution until save is done
-        // apply will continue the app or keep it running regardless of what happens in the background
-
-    }
-
+    // used to register and check all is provided
     private void registerUser(View view){
         //checking if username is empty
         if(TextUtils.isEmpty(username.getText().toString())){
@@ -168,6 +141,7 @@ public class RegisterActivity extends AppCompatActivity {
                 });
     }
 
+    // add user to db after all checks above are satisfied
     private void addUsertoFirebase() {
         // below 3 lines of code is used to set
         // data in our object class.

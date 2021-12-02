@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/image_background"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -32,7 +32,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/image" />
+        app:layout_constraintTop_toTopOf="@+id/image_background" />
 
     <TextView
         android:id="@+id/registration"
@@ -50,7 +50,7 @@
 
 
     <TextView
-        android:id="@+id/sign_up_ek1"
+        android:id="@+id/sign_up_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center"
@@ -62,7 +62,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image" />
+        app:layout_constraintTop_toBottomOf="@+id/image_background" />
 
     <ImageView
         android:id="@+id/bg"
@@ -73,7 +73,7 @@
         android:src="@drawable/bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_ek1" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_tv" />
 
 
     <EditText
@@ -84,13 +84,13 @@
         android:layout_marginBottom="32dp"
         android:hint="@string/username_string"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/bg_ek1"
+        app:layout_constraintBottom_toTopOf="@+id/bg2"
         app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
         app:layout_constraintStart_toStartOf="@+id/gl_10pc"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_ek1" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_tv" />
 
     <ImageView
-        android:id="@+id/bg_ek1"
+        android:id="@+id/bg2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -110,7 +110,7 @@
         android:hint="@string/email_string"
         android:textSize="20sp"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/bg123"
+        app:layout_constraintBottom_toTopOf="@+id/bg3"
         app:layout_constraintEnd_toStartOf="@+id/gl_90pc"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/gl_10pc"
@@ -118,7 +118,7 @@
         app:layout_constraintVertical_bias="0.769" />
 
     <ImageView
-        android:id="@+id/bg123"
+        android:id="@+id/bg3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -126,7 +126,7 @@
         android:src="@drawable/bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bg_ek1" />
+        app:layout_constraintTop_toBottomOf="@+id/bg2" />
 
     <EditText
         android:id="@+id/password"
@@ -139,7 +139,7 @@
         app:layout_constraintEnd_toStartOf="@+id/vector"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/gl_10pc"
-        app:layout_constraintTop_toBottomOf="@+id/bg_ek1" />
+        app:layout_constraintTop_toBottomOf="@+id/bg2" />
 
     <ImageView
         android:id="@+id/vector"
@@ -151,7 +151,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.887"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bg_ek1" />
+        app:layout_constraintTop_toBottomOf="@+id/bg2" />
 
 
     <Button
@@ -182,7 +182,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/sign_up_ek1"
+        app:layout_constraintStart_toEndOf="@+id/sign_up_tv"
         app:layout_constraintTop_toTopOf="@+id/gl_34pc" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -200,7 +200,7 @@
         android:text="@string/i_would_like_to_receive_your_newsletter_and_other_promotional_information__string"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bg123" />
+        app:layout_constraintTop_toBottomOf="@+id/bg3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_10pc"
