@@ -47,13 +47,6 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.io.IOException;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 public class ProfileFragment extends Fragment {
 
