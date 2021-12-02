@@ -15,10 +15,7 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-import com.bumptech.glide.Glide;
-import com.example.androidproject1.dao.ChallengeDao;
 import com.example.androidproject1.dao.UserDao;
-import com.example.androidproject1.models.Workout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,25 +26,66 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TimerActivity extends AppCompatActivity {
 
+    //global fields
     Button timerBtn;
     VideoView videoView;
-    DatabaseReference database;
+    DatabaseReference fbDatabaseRef;
     TextView timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
+        //getting intent and data
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
         String time = intent.getStringExtra("time");
         Boolean isChallenge = intent.getBooleanExtra("isChallenge", false);
 
+        //connecting UI to the fields
         timerBtn = findViewById(R.id.timerBtn);
         timer = findViewById(R.id.tvTimer);
         videoView = findViewById(R.id.mainVideo);
-        database = FirebaseDatabase.getInstance().getReference("WorkoutExercises");
+        fbDatabaseRef = FirebaseDatabase.getInstance().getReference("WorkoutExercises");
 
+        //setting the timer and video
+        setTheTimer(time, isChallenge);
+        getTheExerciseVideo(name, time);
+    }
+
+    private void getTheExerciseVideo(String name, String time) {
+
+        //creating the listener to get the video data
+        fbDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                    if (snap.child("name").getValue(String.class).equals(name)) {
+                        String url = snap.child("video").getValue(String.class);
+                        timer.setText(time);
+                        videoView.setVideoURI(Uri.parse(url));
+                        videoView.setMediaController(new MediaController(TimerActivity.this));
+                        videoView.requestFocus();
+                        videoView.start();
+                        //video loop
+                        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                            @Override
+                            public void onPrepared(MediaPlayer mp) {
+                                mp.setLooping(true);
+                            }
+                        });
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+
+        });
+    }
+
+    private void setTheTimer(String time, Boolean isChallenge) {
+        //creating the listener
         timerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,33 +140,6 @@ public class TimerActivity extends AppCompatActivity {
                 }.start();
 
             }
-        });
-
-
-        database.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                    if (snap.child("name").getValue(String.class).equals(name)) {
-                        String url = snap.child("video").getValue(String.class);
-                        timer.setText(time);
-                        videoView.setVideoURI(Uri.parse(url));
-                        videoView.setMediaController(new MediaController(TimerActivity.this));
-                        videoView.requestFocus();
-                        videoView.start();
-                        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                            @Override
-                            public void onPrepared(MediaPlayer mp) {
-                                mp.setLooping(true);
-                            }
-                        });
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-
         });
     }
 

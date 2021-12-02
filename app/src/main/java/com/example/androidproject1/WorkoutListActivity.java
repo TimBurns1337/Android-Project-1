@@ -16,11 +16,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class WorkoutList extends AppCompatActivity {
+public class WorkoutListActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    DatabaseReference database;
-    WorkoutAdapter myAdapter;
+    //global fields
+    RecyclerView workoutRV;
+    DatabaseReference fbDatabaseReference;
+    WorkoutAdapter workoutAdapter;
     ArrayList<Workout> workouts;
 
     @Override
@@ -28,28 +29,42 @@ public class WorkoutList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_list);
 
-        recyclerView = findViewById(R.id.workoutList);
-        database = FirebaseDatabase.getInstance().getReference("Workout");
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //connecting fields to the layout
+        workoutRV = findViewById(R.id.workoutList);
+        workoutRV.setHasFixedSize(true);
+        workoutRV.setLayoutManager(new LinearLayoutManager(this));
 
+        //getting the database reference and creating an array of workouts
+        fbDatabaseReference = FirebaseDatabase.getInstance().getReference("Workout");
         workouts = new ArrayList<>();
-        myAdapter = new WorkoutAdapter(this,workouts);
-        recyclerView.setAdapter(myAdapter);
 
-        database.addValueEventListener(new ValueEventListener() {
+        //setting up the adapter
+        workoutAdapter = new WorkoutAdapter(this,workouts);
+        workoutRV.setAdapter(workoutAdapter);
+
+        //getting the data from FB
+        getWorkoutsFromFB();
+    }
+
+    private void getWorkoutsFromFB() {
+        //creating a value listener
+        fbDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                //looping through nodes
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
 
+                    //getting the workout from FB to the model
                     Workout workout = dataSnapshot.getValue(Workout.class);
                     workout.setId(dataSnapshot.getKey());
+                    //adding the workout to the array list
                     workouts.add(workout);
 
 
                 }
-                myAdapter.notifyDataSetChanged();
+                //notifying the adapter of changes to keep the UI up-to-date
+                workoutAdapter.notifyDataSetChanged();
 
             }
 

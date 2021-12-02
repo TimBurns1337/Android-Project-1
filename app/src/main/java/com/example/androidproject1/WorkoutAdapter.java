@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +19,6 @@ import java.util.ArrayList;
 public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.MyViewHolder> {
 
     Context context;
-
     ArrayList<Workout> list;
 
     public WorkoutAdapter(Context context, ArrayList<Workout> list) {
@@ -37,6 +35,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        //setting the UI
         Workout workout = list.get(position);
         holder.workoutName.setText(workout.getWorkoutName());
         holder.workoutDesc.setText(workout.getWorkoutDesc());
@@ -57,17 +56,19 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.MyViewHo
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            //connecting to the UI
             workoutName = itemView.findViewById(R.id.workoutName);
             workoutDesc = itemView.findViewById(R.id.workoutDescription);
             workoutImg = itemView.findViewById(R.id.idWorkImg);
             workoutID = itemView.findViewById(R.id.workID);
+            //creating a listener when you click on the card
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(v.getContext() , ViewWorkoutActivity.class);
+            //send name of thew workout and ID to the next intent
+            Intent intent = new Intent(v.getContext() , WorkoutOverviewActivity.class);
             intent.putExtra("name" , workoutID.getText());
             intent.putExtra("name2" , workoutName.getText());
             v.getContext().startActivity(intent);
