@@ -49,6 +49,8 @@ public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleVie
         Workout workout = list.get(position);
         holder.workoutName.setText(workout.getWorkoutName());
         holder.workoutDesc.setText(workout.getWorkoutDesc());
+        holder.workoutID.setText(workout.getId());
+        holder.workoutID.setVisibility(View.INVISIBLE);
         Glide.with(context).load(workout.getWorkoutImg()).centerCrop().into(holder.workoutImg);
         holder.date = date;
     }
@@ -63,7 +65,7 @@ public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleVie
         DatabaseReference database = FirebaseDatabase.getInstance().getReference("Schedule1");
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         String uid = firebaseAuth.getCurrentUser().getUid();
-        TextView workoutName, workoutDesc;
+        TextView workoutName, workoutDesc, workoutID;
         ImageView workoutImg;
         String date;
 
@@ -72,6 +74,7 @@ public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleVie
             workoutName = itemView.findViewById(R.id.workoutName);
             workoutDesc = itemView.findViewById(R.id.workoutDescription);
             workoutImg = itemView.findViewById(R.id.idWorkImg);
+            workoutID = itemView.findViewById(R.id.workID);
             itemView.setOnClickListener(this);
         }
 

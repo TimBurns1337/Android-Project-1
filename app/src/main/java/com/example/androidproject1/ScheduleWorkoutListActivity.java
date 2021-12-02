@@ -35,11 +35,12 @@ public class ScheduleWorkoutListActivity extends AppCompatActivity {
         String date = intent.getStringExtra("date");
 
         recyclerView = findViewById(R.id.workoutList);
-        database = FirebaseDatabase.getInstance().getReference("Workout");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        database = FirebaseDatabase.getInstance().getReference("Workout");
         workouts = new ArrayList<>();
+
         myAdapter = new ScheduleViewWorkoutAdapter(this, workouts, date);
         recyclerView.setAdapter(myAdapter);
 
