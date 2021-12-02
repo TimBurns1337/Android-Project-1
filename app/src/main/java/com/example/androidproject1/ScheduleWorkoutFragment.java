@@ -51,15 +51,18 @@ public class ScheduleWorkoutFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         final String[] selectedDate = {sdf.format(new Date(calendar.getDate()))};
 
+        //connecting fields to the layout
         recyclerView = (RecyclerView)view.findViewById(R.id.scheduleWorkout);
-        database = FirebaseDatabase.getInstance().getReference("Schedule1");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        //getting the database reference and creating an array of workouts
+        database = FirebaseDatabase.getInstance().getReference("Schedule1");
+        workouts = new ArrayList<>();
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         String uid = firebaseAuth.getCurrentUser().getUid();
 
-        workouts = new ArrayList<>();
+        //setting up the adapter
         myAdapter = new ScheduleWorkoutListAdapter(getActivity(), workouts, selectedDate[0]);
         recyclerView.setAdapter(myAdapter);
 
@@ -69,8 +72,10 @@ public class ScheduleWorkoutFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 workouts.clear();
+                //looping through users
                 for (DataSnapshot users : snapshot.getChildren()){
                     if (users.getKey().equals(uid)) {
+                        //looping through workouts
                         for (DataSnapshot dsWorkout : users.getChildren()) {
                             String id = dsWorkout.getKey();
                             String workout = dsWorkout.child("workout").getValue().toString();
@@ -95,10 +100,6 @@ public class ScheduleWorkoutFragment extends Fragment {
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
                 month = month + 1;
                 selectedDate[0] = String.valueOf(day + "/" + month + "/" + year);
-
-                //CHANGE DATA IN RECYCLER
-
-
             }
         });
 

@@ -40,6 +40,7 @@ public class PlanWorkoutAdapter extends RecyclerView.Adapter<PlanWorkoutAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull PlanWorkoutAdapter.MyViewHolder holder, int position) {
+        //setting the UI
         Plan plan = list.get(position);
         holder.planName.setText(plan.getName());
         DatabaseReference database = FirebaseDatabase.getInstance().getReference("Schedule1");
@@ -72,6 +73,7 @@ public class PlanWorkoutAdapter extends RecyclerView.Adapter<PlanWorkoutAdapter.
         TextView planName;
 
         public MyViewHolder(@NonNull View itemView) {
+            //connecting to the UI
             super(itemView);
             planName = itemView.findViewById(R.id.planName);
         }

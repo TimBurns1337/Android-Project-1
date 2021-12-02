@@ -46,6 +46,7 @@ public class ScheduleWorkoutListAdapter  extends RecyclerView.Adapter<ScheduleWo
 
     @Override
     public void onBindViewHolder(@NonNull ScheduleWorkoutListAdapter.MyViewHolder holder, int position) {
+        //setting the UI
         ScheduleWorkout workout = list.get(position);
         holder.workoutName.setText(workout.getWorkoutName());
         holder.workoutDate.setText(workout.getWorkoutDate());
@@ -80,6 +81,7 @@ public class ScheduleWorkoutListAdapter  extends RecyclerView.Adapter<ScheduleWo
         TextView workoutName, workoutDate;
 
         public MyViewHolder(@NonNull View itemView) {
+            //connecting to the UI
             super(itemView);
             workoutName = itemView.findViewById(R.id.workoutName);
             workoutDate = itemView.findViewById(R.id.workoutDate);

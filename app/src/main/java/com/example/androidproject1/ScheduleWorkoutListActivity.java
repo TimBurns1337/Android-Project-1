@@ -34,23 +34,31 @@ public class ScheduleWorkoutListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String date = intent.getStringExtra("date");
 
+        //connecting fields to the layout
         recyclerView = findViewById(R.id.workoutList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //getting the database reference and creating an array of workouts
         database = FirebaseDatabase.getInstance().getReference("Workout");
         workouts = new ArrayList<>();
 
+        //setting up the adapter
         myAdapter = new ScheduleViewWorkoutAdapter(this, workouts, date);
         recyclerView.setAdapter(myAdapter);
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
+
+            //looping through nodes
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    //getting the workout from FB to the model
                     Workout workout = dataSnapshot.getValue(Workout.class);
+                    //adding the workout to the array list
                     workouts.add(workout);
                 }
+                //notifying the adapter of changes to keep the UI up-to-date
                 myAdapter.notifyDataSetChanged();
             }
 

@@ -48,6 +48,7 @@ public class PlanWorkoutFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.plan_workout_fragment, container, false);
+        //connecting fields to the layout
         month = view.findViewById(R.id.month);
         day = view.findViewById(R.id.day);
         year = view.findViewById(R.id.year);
@@ -56,10 +57,11 @@ public class PlanWorkoutFragment extends Fragment {
         year.setText(yearFormat.format(today));
 
         recycler = (RecyclerView)view.findViewById(R.id.recycler);
-        database = FirebaseDatabase.getInstance().getReference("Schedule1");
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        //getting the database reference and creating an array of plans
+        database = FirebaseDatabase.getInstance().getReference("Schedule1");
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         String uid = firebaseAuth.getCurrentUser().getUid();
 
@@ -71,6 +73,7 @@ public class PlanWorkoutFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 plansList.clear();
+                //looping through nodes
                 for (DataSnapshot plans : snapshot.getChildren()){
                     if (plans.getKey().equals(uid)) {
                         for (DataSnapshot dsWorkout : plans.getChildren()) {

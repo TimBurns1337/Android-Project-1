@@ -46,6 +46,7 @@ public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleVie
 
     @Override
     public void onBindViewHolder(@NonNull ScheduleViewWorkoutAdapter.MyViewHolder holder, int position) {
+        //setting the UI
         Workout workout = list.get(position);
         holder.workoutName.setText(workout.getWorkoutName());
         holder.workoutDesc.setText(workout.getWorkoutDesc());
@@ -71,15 +72,18 @@ public class ScheduleViewWorkoutAdapter extends RecyclerView.Adapter<ScheduleVie
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            //connecting to the UI
             workoutName = itemView.findViewById(R.id.workoutName);
             workoutDesc = itemView.findViewById(R.id.workoutDescription);
             workoutImg = itemView.findViewById(R.id.idWorkImg);
             workoutID = itemView.findViewById(R.id.workID);
+            //creating a listener when you click on the card
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
+            //send name of thew workout and date to the DB
             Map workout = new HashMap();
             workout.put("workout", workoutName.getText().toString());
             workout.put("date", date);
