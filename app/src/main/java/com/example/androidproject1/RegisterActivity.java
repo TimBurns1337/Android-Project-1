@@ -71,27 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
                 registerUser(view);
             }
         });
-
-        //Get shared preferences object
-        String sharedPrefFile = "com.example.androidproject1"; // needs to be the userusernamof your application
-        SharedPreferences mPreferences = getSharedPreferences(sharedPrefFile,
-                MODE_PRIVATE);
-
-        String text1 = mPreferences.getString("text1","");
-        String text2 = mPreferences.getString("text2","");
-        String text3 = mPreferences.getString("text3","");
-        // text is the key, default value is blank
-        if(text1!=""){
-            username.setText(text1);
-        }
-
-        if(text2!=""){
-            email.setText(text2);
-        }
-
-        if(text3!=""){
-            password.setText(text3);
-        }
     }
 
     // move to login page

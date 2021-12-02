@@ -108,7 +108,8 @@ public class ProfileFragment extends Fragment {
 
                 profileIV = getView().findViewById(R.id.profileImage);
 
-                Picasso.get().load(user.getProfileImage()).resize(500,500).into(profileIV);
+                // added place holder for when user doenst have pic assigned
+                Picasso.get().load(user.getProfileImage()).placeholder(R.drawable.profile_icon).resize(500,500).into(profileIV);
             }
 
             @Override
