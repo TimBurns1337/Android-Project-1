@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/background_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -33,7 +33,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/image" />
+        app:layout_constraintTop_toTopOf="@+id/background_image" />
 
 
     <TextView
@@ -58,7 +58,7 @@
         app:layout_constraintGuide_percent="0.34" />
 
     <Button
-        android:id="@+id/rec_log"
+        android:id="@+id/loginBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -72,7 +72,7 @@
 
 
     <Button
-        android:id="@+id/rec_reg"
+        android:id="@+id/registerBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -82,11 +82,11 @@
         app:layout_constraintEnd_toStartOf="@+id/gl_85pc"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/gl_15pc"
-        app:layout_constraintTop_toBottomOf="@+id/rec_log"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
         android:onClick="signupClicked"/>
 
     <Button
-        android:id="@+id/rec_soc"
+        android:id="@+id/socialBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -97,7 +97,7 @@
         app:layout_constraintEnd_toStartOf="@+id/gl_85pc"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/gl_15pc"
-        app:layout_constraintTop_toBottomOf="@+id/rec_reg"
+        app:layout_constraintTop_toBottomOf="@+id/registerBtn"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline

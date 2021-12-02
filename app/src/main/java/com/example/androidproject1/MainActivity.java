@@ -48,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // move to login activity
     public void loginClicked(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
 
         startActivity(intent);
     }
 
+    // move to register activity
     public void signupClicked(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
 
