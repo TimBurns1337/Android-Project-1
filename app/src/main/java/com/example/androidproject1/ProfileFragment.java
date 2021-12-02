@@ -50,6 +50,7 @@ import java.io.IOException;
 
 public class ProfileFragment extends Fragment {
 
+    // create vars for work
     private ProfileViewModel mViewModel;
     private UserDao userDao;
     private User user;
@@ -78,11 +79,14 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
+        // create firebase instance and getting current user id
         firebaseAuth = FirebaseAuth.getInstance();
         String uid = firebaseAuth.getCurrentUser().getUid();
 
+        // declare what view we are referring too
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
+        // setting vars above to views objects
         Username = view.findViewById(R.id.username);
         ProfileFname = view.findViewById(R.id.profile_fname);
         ProfileLname = view.findViewById(R.id.profile_lname);
@@ -91,8 +95,10 @@ public class ProfileFragment extends Fragment {
         Weight = view.findViewById(R.id.ET_pro_weight);
         Height = view.findViewById(R.id.heighttext);
 
+        //create database reference object for work with below
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("User");
 
+        // method to get user specific data
         rootRef.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -104,15 +110,14 @@ public class ProfileFragment extends Fragment {
                 Sex.setText(user.getSex());
                 Weight.setText(user.getWeight());
                 Height.setText(user.getHeight());
-
-
                 profileIV = getView().findViewById(R.id.profileImage);
 
-                // added place holder for when user doenst have pic assigned
+                //use picasso to load image into profile image view
+                // added place holder for when user doenst have pic assigned and size adjustment
                 Picasso.get().load(user.getProfileImage()).placeholder(R.drawable.profile_icon).resize(500,500).into(profileIV);
             }
 
-            @Override
+            @Override // log if cancelled
             public void onCancelled(DatabaseError databaseError) {
                 Log.e("UserListActivity", "Error occured");
                 // Do something about the error
@@ -121,20 +126,21 @@ public class ProfileFragment extends Fragment {
 
 
 
+        // method to get user data from view and pass it to update user activity
         Button btn = (Button) view.findViewById(R.id.btnChangePro);
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent i = new Intent(getActivity(),UpdateProfileActivity.class);
                 // TODO: get data from textview
+                // get users current data
                 FName = ProfileFname.getText().toString();
                 LName = ProfileLname.getText().toString();
                 dob = DOB.getText().toString();
                 sex = Sex.getText().toString();
                 weight = Weight.getText().toString();
                 height = Height.getText().toString();
-
-
+                // send the data in intent
                 i.putExtra("fname",FName);
                 i.putExtra("lname",LName);
                 i.putExtra("dob",dob);

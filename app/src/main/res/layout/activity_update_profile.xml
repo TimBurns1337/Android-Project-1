@@ -7,7 +7,7 @@
     tools:context=".UpdateProfileActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/updateTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update Profile"
@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/updateTV"
         app:layout_constraintVertical_bias="0.948" />
 
     <ImageView
@@ -37,7 +37,7 @@
         android:src="@drawable/bg_ek3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/updateTV" />
 
 
     <ImageView
@@ -104,7 +104,7 @@
         android:layout_marginTop="32dp"
         android:text="First Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/updateTV" />
 
     <TextView
         android:id="@+id/tv_lname"
@@ -164,7 +164,7 @@
         android:layout_marginEnd="40dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/updateTV" />
 
     <EditText
         android:id="@+id/et_lname"
