@@ -26,11 +26,11 @@ public class CommunityFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        //return inflater.inflate(R.layout.community_fragment, container, false);
 
         View view = inflater.inflate(R.layout.community_fragment, container, false);
 
         // create the click handlers
+        // handler for compete with friends
         Button competeBtn = (Button) view.findViewById(R.id.compete_with_friends_btn);
         competeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +40,7 @@ public class CommunityFragment extends Fragment {
             }
         });
 
+        // handler for compete requests
         Button leaderboardBtn = (Button) view.findViewById(R.id.leaderboard_btn);
         leaderboardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +50,7 @@ public class CommunityFragment extends Fragment {
             }
         });
 
-
+        // handler for leaderboard
         Button competeReqBtn = (Button) view.findViewById(R.id.compete_requests_btn);
         competeReqBtn.setOnClickListener(new View.OnClickListener() {
             @Override

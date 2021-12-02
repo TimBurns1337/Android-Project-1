@@ -66,6 +66,7 @@ public class ChallengeActivity extends AppCompatActivity {
         });
     }
 
+    // Method to list the user buttons, excluding users with existing sent requests
     public void generateFriendListButtons(DataSnapshot userSnapshot, DataSnapshot challengeSnapshot){
 
         // build a set for the sent challenges,
@@ -119,7 +120,8 @@ public class ChallengeActivity extends AppCompatActivity {
 
     }
 
-    // Challenge created
+    // Method to handle button click to send challenge requests
+    // Inserts to challenge table
     public void friendButtonClick(AppCompatButton btn) {
 
         String friendUsername = btn.getText().toString();

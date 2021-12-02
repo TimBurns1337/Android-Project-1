@@ -11,6 +11,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.List;
 
+/* *
+* Data access layer for Challenge table
+* */
+
 public class ChallengeDao {
 
     private DatabaseReference df;
@@ -21,6 +25,7 @@ public class ChallengeDao {
 
     }
 
+    // Method to add challenge to Challenge table
     public void addChallege(String userUid, String friendUid, String friendUsername) {
 
         // handle sent challenges
@@ -32,6 +37,7 @@ public class ChallengeDao {
         // handle received challenges
         HashMap receivedMap = new HashMap();
         HashMap challengeContentMap = new HashMap();
+        // TODO for future implementation, pull the url from workout playlist
         challengeContentMap.put("url", "random url");
         challengeContentMap.put("username", friendUsername);
         receivedMap.put(userUid, challengeContentMap);
@@ -39,10 +45,12 @@ public class ChallengeDao {
 
     }
 
+    // Method to retrieve Challenge information by UID
     public Task<DataSnapshot> getChallengeByUserUid(String userUid) {
         return df.child(userUid).get();
     }
 
+    // Method to remove Challenge information
     public void removeChallenge(String userUid, String friendUid) {
         Log.d("userid", userUid);
         Log.d("friendUid", friendUid);
@@ -53,7 +61,7 @@ public class ChallengeDao {
         df.child(friendUid).child("sent").child(userUid).removeValue();
     }
 
-    //
+    // Method to retrieve Challenges for a given user
     public Task<DataSnapshot> getChallegeByUser(String uid) {
         return df.child(uid).get();
     }

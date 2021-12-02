@@ -24,7 +24,6 @@ public class ChallengeRequestActivity extends AppCompatActivity {
     private LinearLayout ll;
     private UserDao userDao;
     private ChallengeDao challengeDao;
-    //private String username;
     private String uid;
 
     @Override
@@ -50,6 +49,7 @@ public class ChallengeRequestActivity extends AppCompatActivity {
 
     }
 
+    // Method to dynamically create the list of buttons for the request page
     public void generateRequestListButtons(DataSnapshot requestsSnapshot) {
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -136,6 +136,7 @@ public class ChallengeRequestActivity extends AppCompatActivity {
         }
     }
 
+    // Method to initiate a challenge which calls the TimerActivity class
     public void startChallenge() {
         // Challenge is currently set to climbers
         Intent intent = new Intent(this, TimerActivity.class);
@@ -146,6 +147,8 @@ public class ChallengeRequestActivity extends AppCompatActivity {
 
     }
 
+    // Method to handle button click from either accepting the challenge or rejecting the challenge
+    // Updates the Challenge table and removes challenge data
     public void handleButtonClick(AppCompatButton btn) {
         String receivedUsername = btn.getTag().toString();
 
